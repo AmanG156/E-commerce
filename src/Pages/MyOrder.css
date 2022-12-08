@@ -1,0 +1,115 @@
+.logout_btn{
+    background-color: orange;
+    width: 105px;
+    height: 39px;
+}
+.Profile_header{
+    border: 2px ;
+    height: 100px;
+    width: 100px;
+}
+.side_bar{
+    background-color: white;
+    width: 291px;
+    height: 706px;
+    border-radius: 19px;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    border-top: 4px solid orange;
+    border-bottom: 4px solid orange;
+    box-shadow: 0px 0px 5px #aaaaaa;
+}
+
+.profile{
+    padding-right: 118px;
+    padding-top: 24px;
+    border-bottom: 1px solid;
+    color: orange;
+}
+.my_orders{
+    margin-left: -168px;
+}
+
+.h1{
+    border-bottom: 2px solid black;
+}
+/* .Input_profile{
+    margin-right: 425px;
+} */
+/* .Full_Name{
+    width: 556px;
+    height: 41px;
+    border-radius: 7px;
+    margin-bottom: 28px;
+} */
+/* .Email_id{
+    width: 556px;
+    height: 41px;
+    border-radius: 7px;
+    margin-bottom: 28px;
+}
+.Contact_number{
+    width: 556px;
+    height: 41px;
+    border-radius: 7px;
+    margin-bottom: 28px;
+}
+.Password{
+    width: 556px;
+    height: 41px;
+    border-radius: 7px;
+    margin-bottom: 28px;
+}
+.Profile_btn{
+    background-color: orange;
+    width: 152px;
+    height: 42px;
+    margin-right: 398px;
+} */
+/* .My_profile{
+    margin-right: 424px;
+    margin-top: 16px;
+} */
+/* .profilepic{
+    width: 115px;
+    height: 100px;
+    margin-top: 24px;
+    margin-bottom: 53px;
+    margin-left: -76px;
+} */
+.footer{
+    margin-top: 202px;
+}
+.profile_row{
+    margin-top: 68px;
+}
+.Card_body{
+   background-color: lightgray ;
+}
+
+.card-body {
+    display: flex;
+
+    justify-content: space-between;
+}
+.productinfo {
+    text-align: left;
+    width: 55%;
+    margin-top: 25px;
+
+}
+
+.card.card_items{
+    box-shadow: 0px 0px 5px #e3e3e3;
+
+    border: none;
+}
+.card-body.Myorder_body{
+    box-shadow: 0px 0px 5px #e3e3e3;
+    margin-top: 29px;
+   
+}
+.orders_History{
+    margin-top: -20px;
+    margin-right: 124px;
+}

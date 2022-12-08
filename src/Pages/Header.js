@@ -1,0 +1,94 @@
+
+import React, { useEffect, useState } from "react";
+import { FaUser, FaShoppingBag, } from "react-icons/fa";
+import {BsSearch} from  "react-icons/bs"
+import icon from "../images/icon.png";
+import { AppContext, useGlobalContext } from "../context/use-context";
+import axios from "axios";
+import "./Header.css";
+import { Link } from "react-router-dom";
+
+export default function Header() {
+const { setCart, cart } = useGlobalContext();
+const [allProducts, setAllproducts] = useState([]);
+const [product, setProduct] = useState([]);
+const { login, setLogin, user } = useGlobalContext();
+const [searchProduct, setSearchProduct] = useState('');
+ 
+useEffect(()=>{
+    let headers = {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      };
+      axios
+        .post("https://ecommercewebap.herokuapp.com/api/getCartitems", {}, { headers: headers })
+        .then((val)=>{setCart(val.data)})
+},[])
+    const logout = () => {
+        localStorage.setItem("token", "");
+        setLogin(!login);
+      };
+      console.log(user);
+      const Search = (e) => {
+        var lowerCase = e.target.value.toLowerCase();
+        let data = allProducts.filter(
+          (v) => v.name.toLowerCase().indexOf(lowerCase) !== -1
+        );
+        setProduct(data);
+        console.log(lowerCase);
+      };
+  return (
+    <div>
+              <nav className="navbar bg-light header">
+        <div className="container-fluid">
+          <img src={icon} style={{ marginLeft: "40px", marginTop: "6px" }} />
+          <input
+            type="search"
+            placeholder="  Enter Your Product Name"
+            onChange={(e) => {
+              Search(e);
+            }}
+            className="Searchbar"
+        />
+          <div className="headicons">
+            <div className="profileicon">
+            <Link to="/Pages/MyProfile">
+              {" "}
+              <FaUser className="header_icon" />
+            </Link>
+
+            </div>
+            <div className="carticon">
+            <Link to="/Pages/Cart">
+
+                  {" "}
+                  <div className="amount-container">
+                    <p className="total-amount">{cart.length}</p>
+                  </div>
+                </Link>
+                <Link to="/Pages/Cart">
+                {" "}
+                <FaShoppingBag className="bagIcon" />{" "}
+              </Link>
+            </div>
+          </div>
+          <div className="logouts_btn">
+          <Link to="/Pages/Login">
+            {user&&user.length > 0 ? (
+              <button
+                className="logout_btn"
+                onClick={() => {
+                  logout();
+                }}
+              >
+                Logout
+              </button>
+            ) : (
+              <button className="logout_btn">LogIn</button>
+            )}
+          </Link>
+          </div>
+        </div>
+      </nav>
+    </div>
+  )
+}

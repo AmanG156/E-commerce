@@ -1,0 +1,110 @@
+.logout_btn{
+    background-color: orange;
+    width: 105px;
+    height: 39px;
+}
+.Profile_header{
+    border: 2px ;
+    height: 100px;
+    width: 100px;
+}
+.side_bar{
+    background-color: white;
+    width: 291px;
+    height: 623px;
+    border-radius: 19px;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    border-top: 4px solid orange;
+    border-bottom: 4px solid orange;                    
+    box-shadow: 0px 0px 5px #aaaaaa;
+}
+
+.profile{
+    padding-right: 118px;
+    padding-top: 24px;
+    border-bottom: 1px solid;
+    color: orange;
+    font-size: 22px;
+}
+.my_orders{
+    margin-left: -168px;
+    margin-top: revert;
+}
+.order_History{
+    margin-top: -20px;
+    margin-right: 124px;
+
+}
+.h1{
+    border-bottom: 2px solid black;
+}
+.Input_profilepage{
+    /* margin-right: 425px; */
+}
+
+.Profile_btn{
+    background-color: #ffc107;
+    width: 152px;
+    height: 42px;
+    display: block;
+}
+.My_profileupdate{
+    display: flex;
+    margin-top: 18px;
+    margin-bottom: 39px;
+}
+.profilepic{
+    width: 115px;
+    height: 100px;
+    margin-top: 24px;
+    margin-bottom: 53px;
+    margin-left: -76px;
+    border-radius: 55px;
+}
+.footer{
+    margin-top: 202px;
+}
+.profile_row{
+    margin-top: 68px;
+}
+.Card_body{
+   background-color: lightgray important;
+}
+.inputicon{
+    position: relative;
+}
+.icons{
+    position: absolute;
+    top: 5px;
+    left: 7px;
+}
+.input_field input {
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+}
+.Confirm_Address{
+    display: list-item;
+    width: 635px;
+    padding-left: 41px;
+    border-radius: 11px;
+}
+@media screen and (max-width: 700px) {
+    .Confirm_Address {
+       
+        width: 100%;
+        
+    }
+    .side_bar {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 20px;
+    }
+    .Input_profilepage {
+        margin-top: 20px !important;
+    }
+    .footer {
+        margin-top: 85px;
+    }
+  }

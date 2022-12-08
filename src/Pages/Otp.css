@@ -1,0 +1,22 @@
+.otp_field{
+    margin-right: 434px;
+    margin-top: 103px;
+}
+.otp_heading{
+    margin-right: 208px;
+    margin-bottom: revert;
+}
+.otp_input{
+    border-top: none;
+    border-left:none;
+    border-right: none;
+    width: 272px;
+    font-size: 36px;
+}
+.otp_btn{
+    margin-top: 53px;
+    margin-right: 113px;
+    width: 158px;
+    height: 41px;
+    background-color: orange;
+}

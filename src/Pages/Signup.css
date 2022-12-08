@@ -1,0 +1,53 @@
+
+.card.text-black {
+    border: none;
+}
+.form-control{
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important ;
+}
+.order-lg-1 {
+    order: 1!important;
+    margin-left: 500px;
+    margin-top: 90px !important;
+}
+.text-center{
+    margin-left: 200px;
+}
+.form{
+    margin-right: 5px;
+}
+.signup_background{
+    background-image: url('../images/signupbg.png');
+}
+.row11 {
+    width: 100%;
+}
+.SignIcons{
+    position: absolute;
+    top: 180px !important;
+    left: 622px !important;
+}
+.Login_btn{
+    margin-right: 171px;
+    margin-top: 88px;
+    margin-right: 143px;
+}
+.signup_header{
+    margin-right: 305px;
+    margin-bottom: 60px;
+}
+.signup_btn{
+    margin-right: 334px;
+}
+.singupform .form-outline {
+    position: relative;
+}
+.signupIcon {
+    position: absolute;
+    top: 5px;
+}
+.singupform .form-outline input {
+    padding-left: 32px;
+}

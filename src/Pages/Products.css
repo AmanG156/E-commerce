@@ -1,0 +1,101 @@
+.logout_btn{
+    background-color: orange;
+    width: 105px;
+    height: 39px;
+}
+.Profile_header{
+    border: 2px ;
+    height: 100px;
+    width: 100px;
+}
+.side_List{
+    background-color: white;
+    width: 291px;
+    height: 635px;
+    border-radius: 19px;
+    overflow: auto;
+  
+}
+.categories{
+    /* border-bottom: 1px solid #ccc */
+    margin-right: 155px;
+    margin-top: 35px;
+    padding-top: 24px;
+    font-size: 21px;
+}
+.clear{
+    border: none;
+}
+.Checkbox{
+    text-align: left;
+    width: 63%;
+    margin: 20px;
+    margin-top: 37px;
+
+}
+.Prices{
+    margin-right: 139px;
+    margin-top: 35px;
+    /* padding-top: 24px; */
+    font-size: 21px;
+}
+.item_details{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.header_icon{
+    margin-left:-49px ;
+    margin-bottom:-85px ;
+}
+
+.addtocart_btn{
+    color: orange;
+}
+
+.sidelist_col{
+    padding-top: 53px;
+}
+.product_col{
+    padding-top: 31px;
+}
+.row.Product_list img {
+    height: 200px;
+    object-fit: cover;
+}
+.bagIcon{
+    margin-top: -40px;
+}
+.header{
+    display: contents;
+}
+.carticon .amount-container {
+    position: absolute;
+    top: -10px;
+    right: -20px;
+    background: yellow;
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+}
+.carticon .bagIcon {
+    margin-top: 0px;
+}
+.headicons {
+    display: flex;
+    align-items: center;
+}
+.profileicon {
+    display: block;
+    margin-right: 14px;
+}
+.profileicon .header_icon {
+     margin-left: 0px; 
+     margin-bottom: 0px; 
+}
+.carticon {
+    position: relative;
+}
+.Product_card{
+}

@@ -1,0 +1,27 @@
+.Footer{
+    background-color: lightgray;
+}
+.footer_icon{
+    margin-right:"128px"
+}
+.footer_img{
+    /* margin-left:"-214px" */
+    display: flex;
+}
+.connect_with{
+    color: blue;
+     /* margin-left:"-165px" */
+     display: flex;
+}
+.block_a{
+  text-align: justify;
+}
+.block_b{
+    text-align: justify;
+}
+.block_c{
+    text-align: justify;
+}
+.block_d{
+    text-align: justify;
+}

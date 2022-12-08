@@ -1,0 +1,76 @@
+.card.text-black {
+    border: none;
+}
+.form-control{
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important ;
+}
+.order-lg-1 {
+    order: 1!important;
+    margin-left: 500px;
+    margin-top: 90px !important;
+}
+.text-center{
+    margin-left: 200px;
+}
+.form{
+    margin-right: 5px;
+}
+.loginbtn{
+    margin-left: -206px !important;
+    width: 133px !important;
+}
+.remember{
+    margin-right: 233px;
+}
+.Login_btn{
+    margin-right: 131px;
+    margin-top: 22px;
+    margin-bottom: revert;
+}
+.login_body{
+    margin-left: auto;
+    margin-top: -64px !important;
+}
+.login_icon{
+    position: absolute;
+    top: 163px;
+    left: 548px;
+}
+.login_icons{
+    position: absolute;
+    top: 242px;
+    left: 546px;
+}
+@media screen and (max-width: 700px) {
+    .login{
+        margin-right: 285px !important
+        /* display: flex !important ; */
+    } 
+    .Login_btn {
+    /* margin-right: 338px */
+    display: flex ;
+
+   }
+   .remember{
+    /* margin-right: 304px; */
+    display: flex;
+   }
+   .box{
+    margin-top: 6px !important;
+   }
+   .Have_an{
+    margin-right: 179px;
+ }
+ .login_icon {
+
+    top: 543px;
+    left: 28px;
+ }
+ .login_icons {
+    position: absolute;
+    top: 621px;
+    left: 29px;
+ }
+  }

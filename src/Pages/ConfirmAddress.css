@@ -1,0 +1,134 @@
+.Confirm_Address{
+    display: list-item;
+    width: 635px;
+    padding-left: 41px;
+    border-radius: 11px;
+}
+.Address{
+    width: 376px;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+}
+.Address_heading{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-transform: capitalize;
+    text-align: initial;
+}
+.Address_change{
+    display: block;
+    background-color: orange;
+}
+.address_div{
+    margin-left: 128px;
+    margin-top: 45px;
+}
+.order_items{
+    margin-left: 117px;
+    width: 1004px ;
+    margin-top: 27px;
+
+}
+.Input_field{
+    width: 100%;
+    height: 42px;
+    margin-bottom: 14px;
+}
+.save_btn{
+    width: 107px;
+    height: 37px;
+    background-color: orange;
+    margin-top: 27px;
+}
+
+.Add_btn{
+    display: flex;
+    margin-left: 118px;
+    margin-top: 85px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #e3e3e3;
+    width: 75%;
+    height: 52px;
+    padding-left: 47px;
+    padding-top: 6px;
+    color: #000000;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    text-transform: capitalize;
+}
+.Country_field{
+    height: 42px;
+}
+.State_field{
+    height: 42px;
+    width: 100%;
+}
+.City_field{
+    height: 42px;
+    width: 100%;
+}
+.Confirm_card{
+    height: 259px;
+    margin-top: 33px;
+    margin-left: auto;
+}
+.Address_div{
+    margin-left: 119px;
+    margin-top: 39px;
+    box-shadow: 0px 0px 5px #e3e3e3;
+    width: 75%;
+    padding-left: 34px;
+    padding-top: 13px;
+}
+
+.detail_address{ 
+ font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 26px;
+text-align: initial;
+text-transform: capitalize;
+color: #000000;
+opacity: 0.7;
+width: 80%;
+}
+.Edit_icon{
+    text-align: right;
+    margin-top: -35px;
+    padding-right: 55px;
+    padding-bottom: 19px;
+}
+.Delete_icon{
+    text-align: right;
+    padding-bottom: 28px;
+    margin-top: -43px;
+    margin-right: 20px;
+    cursor: pointer;
+
+}
+.cart_item{
+    margin-left: 114px ;
+    width: 1004px !important;
+    margin-top: 27px !important;
+}
+.card-text {
+    text-align: initial;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+}
+.check_btn{
+    display: -webkit-box;
+    margin-left: -24px;
+    margin-bottom: -18px;
+}
