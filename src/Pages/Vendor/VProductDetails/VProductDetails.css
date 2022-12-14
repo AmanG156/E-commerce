@@ -1,0 +1,47 @@
+.detail_div{
+    /* width: 1056px; */
+height: 715px;
+margin-top: 43px;
+margin-left: -62px;
+margin-bottom: 20px;
+
+background: #FFFFFF;
+opacity: 0.5;
+box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+border-radius: 19px;
+}
+.price{
+    width: 114px !important;
+    height: 50px !important;
+    /* left: 149px; */
+    /* top: 120px; */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 50px;
+    color: #17203F;
+}
+.time{
+    width: 112px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 50px;
+    color: #17203F !important;
+    /* opacity: 0.5; */
+}
+.Order_Card{
+    margin-left: -30px;
+}
+.VProduct_Card {
+    width: 320px;
+    margin-left: 30px;
+}
+.Card_heading{
+    text-align: initial;
+    margin-left: 30px;
+    margin-bottom: 45px;
+    padding-top: 26px;
+}

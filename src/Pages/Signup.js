@@ -4,7 +4,7 @@ import signup from "../images/Signup.png";
 import axios from "axios";
 import { FaUser, FaEnvelopeOpen, FaPhoneVolume ,FaLock} from "react-icons/fa";
 
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [showerror, setShowerror] = useState(false);

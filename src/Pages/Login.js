@@ -5,10 +5,10 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import {FaEnvelopeOpen,FaLock} from "react-icons/fa"
 
-import { AppContext, useGlobalContext } from "../context/use-context";
+// import { AppContext, useGlobalContext } from "../context/use-context";
 
 export default function Login() {
-  const { setLogin, login } = useState(false);
+  // const { setLogin, login } = useState(false)
   const [showerror, setShowerror] = useState(false);
   const navigate = useNavigate()
   const [data1, setData1] = useState({

@@ -1,6 +1,6 @@
-.VSignupfield{
+/* .VSignupfield{
 box-sizing: border-box;
-/* position: absolute; */
+
 width: 446px !important;
 height: 47px;
 left: 497px;
@@ -48,11 +48,10 @@ line-height: 52px;
 color: #17203F;
 }
 .border{
-    /* position: absolute; */
+  
     width: 370px;
     height: 0px;
     left: 446px;
-    /* top: 691px; */
     margin-left: 67px;
     margin-bottom: 22px;
 }
@@ -62,10 +61,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
-/* identical to box height */
 
-
-/* Gray 40 */
 
 color: #939393;
 }
@@ -75,10 +71,6 @@ font-style: normal;
 font-weight: 500; 
 font-size: 17px;
 line-height: 22px;
-/* identical to box height, or 129% */
-
-/* display: flex;
-align-items: center;
-text-decoration-line: underline; */ 
+ 
 color: black;
-}
+} */

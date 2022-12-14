@@ -1,0 +1,26 @@
+.ProductCatalogue_div{
+    position: absolute;
+    width: 1056px;
+    height: 715px;
+    left: 334px;
+    top: 108px;
+    
+    background: #FFFFFF;
+    opacity: 0.5;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 19px;
+}
+.heading_btn{
+    display: flex;
+    justify-content: space-between;
+}
+.ProductCatalogue_heading{
+    margin-top: 23px;
+    margin-left: 31px;
+}
+.addMore_btn{
+    margin-top: 23px;
+    margin-right: 30px;
+    background-color: orange;
+border-radius: 5px;
+}

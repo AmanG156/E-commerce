@@ -1,0 +1,32 @@
+
+.Profile_header{
+    border: 2px ;
+    height: 100px;
+    width: 100px;
+}
+.VSearchbar{
+    background-color: bisque;
+    width: 565px;
+  height: 45px;
+  margin-left: 111px;
+}
+
+.Vheader{
+    display: contents;
+}
+
+.Vprofileicon .Vheader_icon {
+     margin-left: 0px; 
+     margin-bottom: 0px; 
+}
+nav.navbar.bg-light.Vheader {
+    width: 81%;
+    margin-right: 0;
+    margin-left: auto;
+    padding: 10px;
+}.Vheadicons {
+    margin-left: 87px;
+}
+.Vheadbox {
+    justify-content: flex-start !important;
+}

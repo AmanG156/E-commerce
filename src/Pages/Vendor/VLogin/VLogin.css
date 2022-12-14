@@ -1,0 +1,94 @@
+/* .VLoginfield{
+    box-sizing: border-box;
+    width: 422px !important;
+    height: 47px;
+    left: 497px;
+    top: 314px;
+    margin-top: 24px;
+    background: #FFFFFF;
+    margin-left: 54px;
+    border: 1px solid #C4C4C4 !important;
+    border-radius: 5px !important;
+    }
+    .VLogin_div{
+        position: absolute;
+        width: 529px;
+        height: 500px;
+        left: 477px;
+        top: 33px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 15px rgb(0 0 0 / 25%);
+        border-radius: 20px;
+    }
+    .VLogin_btn{
+        box-sizing: border-box;
+        display: inline-block;
+        align-items: center;
+        padding: 0px 40px 2px 42px;
+        gap: 10px;
+        width: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        background-color: #FF9900;
+        border-radius: 5px;
+        justify-content: center;
+        height: 46px;
+    }
+    .heading_Login{
+    height: 70px;
+    margin-top: 27px;
+    left: 652px;
+    top: 210px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 52px;
+    color: #17203F;
+    }
+    .border{
+        
+        width: 370px;
+        height: 0px;
+        left: 446px;
+        margin-left: 67px;
+        margin-bottom: 22px;
+    }
+    .already{
+        font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+   
+    
+    color: #939393;
+    }
+    .swtich_login{
+     font-family: 'Neue Haas Grotesk Text Pro';
+    font-style: normal;
+    font-weight: 500; 
+    font-size: 17px;
+    line-height: 22px;
+
+    color: black;
+    }
+    .error{
+        color : red
+      }
+      .VSwtich_forgot{
+        text-align: end;
+        margin-right: 50px;
+        margin-top: 20px;
+      }
+      .Login_register{
+        font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 17px;
+line-height: 22px;
+align-items: center !important;
+text-decoration-line: underline;
+
+color: #222222;
+      } */

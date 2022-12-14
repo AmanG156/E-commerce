@@ -316,6 +316,35 @@ export default function ConfirmAddress() {
     console.log(payload)
     setPlaceorder(payload)
   }
+  // const handleCheckout = async (id, price) => {
+  //   let payload = {
+  //     subscriptionId: id,
+  //     name: userDetails.firstName,
+  //     email: userDetails.email,
+  //     price: price
+  //   }
+  //   const res = await axios.post("https://8f86-2401-4900-1a5c-9700-c9cc-b636-6442-39a5.in.ngrok.io/api/v2/transaction/subscriptionCheckout",
+  //     payload
+  //   );
+  //   console.log(res);
+  //   console.log(res.status)
+  //   console.log(res.data.session.id);
+  //   const status = res.status;
+  //   const sessionId = res.data.session.id;
+  //   console.log(status);
+    
+
+    /* global Stripe */
+  //   var stripe = Stripe("pk_test_51MCKZXSIuZBNkTWn2rmdQLlbLIDcOTPEmzIiiO8kUgbodWyo27S3UpJ9hVEH11mzjXzJuZuBtm7A26vGMzkxLtzV003N9FBBhX");
+  //   if (status === 200) {
+  //     alert("Going to Checkout Page");
+  //     stripe.redirectToCheckout({ sessionId: sessionId });
+
+  //   } else {
+  //     alert("Failed");
+  //   }
+
+  // };
   return (
     <div>
       <div className="Header">
@@ -335,16 +364,7 @@ export default function ConfirmAddress() {
                 <h5 className="detail_address">
                   {v.Address}, {v.City}, {v.ZipCode}, {v.State}, {v.Country}
                 </h5>
-                {/* <div className="Edit_icon" onClick={(e) => editBox(e, index)}> */}
-                {/* <div>
-                <button
-                  className="Edit_icon"
-                  onClick={(e) => editBox(e, i)}
-                >
-                  <BiEdit />
-                </button>
-                </div> */}
-                {/* </div> */}
+        
                 <div className="Edit_icon">
                   {" "}
                   <span onClick={(e) => editBox(e, i)}>
@@ -633,7 +653,7 @@ export default function ConfirmAddress() {
                 </p>
                 <div>
                   <Link to="/Pages/ConfirmAddress">
-                    <button className="Placeorder_btn btn btn-warning">
+                    <button className="Placeorder_btn btn btn-warning" >
                       Place Order
                     </button>
                   </Link>

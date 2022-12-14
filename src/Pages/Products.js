@@ -18,7 +18,7 @@ export default function Products() {
   const [loading, setLoading] = useState(false);
   const { login, setLogin, user } = useGlobalContext();
   const [isReadMore, setIsReadMore] = useState(true);
-  const navigate = useNavigate
+  const navigate = useNavigate;
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
@@ -120,31 +120,29 @@ export default function Products() {
             }}
             className="Searchbar"
           />
-        
+
           <div className="headicons">
             <div className="profileicon">
-            <Link to="/Pages/MyProfile">
-              {" "}
-              <FaUser className="header_icon" />
-            </Link>
-
+              <Link to="/Pages/MyProfile">
+                {" "}
+                <FaUser className="header_icon" />
+              </Link>
             </div>
             <div className="carticon">
-            <Link to="/Pages/Cart">
-
-                  {" "}
-                  <div className="amount-container">
-                    <p className="total-amount">{cart.length}</p>
-                  </div>
-                </Link>
-                <Link to="/Pages/Cart">
+              <Link to="/Pages/Cart">
+                {" "}
+                <div className="amount-container">
+                  <p className="total-amount">{cart.length}</p>
+                </div>
+              </Link>
+              <Link to="/Pages/Cart">
                 {" "}
                 <FaShoppingBag className="bagIcon" />{" "}
               </Link>
             </div>
           </div>
           <Link to="/Pages/Login">
-            {user&&user.email?.length > 0 ? (
+            {user && user.email?.length > 0 ? (
               <button
                 className="logout_btn"
                 onClick={() => {
@@ -210,9 +208,15 @@ export default function Products() {
                   <div key={index} className="col">
                     <div
                       className="card "
-                      style={{ width: "18rem", marginTop: "20px" , display:"flex"}}
+                      style={{
+                        width: "18rem",
+                        marginTop: "20px",
+                        display: "flex",
+                      }}
                     >
-                      <img src={`https://ecommercewebap.herokuapp.com/${item.image}`} />
+                      <img
+                        src={`https://ecommercewebap.herokuapp.com/${item.image}`}
+                      />
                       <div className="card-body">
                         <h5 className="card-title">
                           {" "}

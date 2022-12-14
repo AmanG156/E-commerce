@@ -1,0 +1,42 @@
+.order_managment_div{
+    position: absolute;
+width: 1056px;
+height: 715px;
+left: 334px;
+top: 108px;
+
+background: #FFFFFF;
+opacity: 0.5;
+box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+border-radius: 19px;
+}
+.Order_managment_Heading{
+    
+    width: 275px;
+    /* height: 50px; */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 50px;
+    color: #17203F;
+    margin-bottom: 37px;
+    margin-top: 24px;
+    margin-left: 25px;
+
+}
+.table_heading{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 50px;
+    color: #17203F;
+}
+.accept_btn{
+    background-color: green;
+}
+.order_div{
+    margin-left: 28px;
+    margin-right: 28px;
+}
