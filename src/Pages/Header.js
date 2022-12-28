@@ -1,9 +1,8 @@
 
 import React, { useEffect, useState } from "react";
 import { FaUser, FaShoppingBag, } from "react-icons/fa";
-import {BsSearch} from  "react-icons/bs"
-import icon from "../images/icon.png";
-import { AppContext, useGlobalContext } from "../context/use-context";
+import icon from "../assests/icon.png";
+import { useGlobalContext } from "../context/use-context";
 import axios from "axios";
 import "./Header.css";
 import { Link } from "react-router-dom";
@@ -13,7 +12,7 @@ const { setCart, cart } = useGlobalContext();
 const [allProducts, setAllproducts] = useState([]);
 const [product, setProduct] = useState([]);
 const { login, setLogin, user } = useGlobalContext();
-const [searchProduct, setSearchProduct] = useState('');
+// const [searchProduct, setSearchProduct] = useState('');
  
 useEffect(()=>{
     let headers = {
@@ -23,6 +22,14 @@ useEffect(()=>{
         .post("https://ecommercewebap.herokuapp.com/api/getCartitems", {}, { headers: headers })
         .then((val)=>{setCart(val.data)})
 },[])
+const Quantity_Number =()=>{
+  let sum = 0 
+ cart.forEach((e)=>{
+   sum+=Number(e.quantity)
+ })
+ console.log("sum",sum)
+ return sum ;
+}
     const logout = () => {
         localStorage.setItem("token", "");
         setLogin(!login);
@@ -40,7 +47,7 @@ useEffect(()=>{
     <div>
               <nav className="navbar bg-light header">
         <div className="container-fluid">
-          <img src={icon} style={{ marginLeft: "40px", marginTop: "6px" }} />
+          <img src={icon} className="Header_img" style={{ marginLeft: "40px", marginTop: "6px" }} />
           <input
             type="search"
             placeholder="  Enter Your Product Name"
@@ -62,7 +69,7 @@ useEffect(()=>{
 
                   {" "}
                   <div className="amount-container">
-                    <p className="total-amount">{cart.length}</p>
+                    <p className="total-amount">{Quantity_Number()}</p>
                   </div>
                 </Link>
                 <Link to="/Pages/Cart">

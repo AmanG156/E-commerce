@@ -46,3 +46,12 @@
 .carticon {
     position: relative;
 }
+@media screen and (max-width: 700px){
+    .logout_btn{    margin-top: 11px;
+        margin-right: -44px;
+    }
+    .Header_img{
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+    }
+}

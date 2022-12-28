@@ -33,6 +33,11 @@
     margin-top: 37px;
 
 }
+.row.Product_list .col {
+    width: 32% !important;
+    max-width: 100%;
+    flex: initial;
+}
 .Prices{
     margin-right: 139px;
     margin-top: 35px;
@@ -56,6 +61,7 @@
 
 .sidelist_col{
     padding-top: 53px;
+    margin-right: 70px;
 }
 .product_col{
     padding-top: 31px;
@@ -97,5 +103,83 @@
 .carticon {
     position: relative;
 }
-.Product_card{
+.card_Product{
+    width: 258px;
+    height: 346px;
+    margin-top: 20px;
+  
+    border: 0.5px solid;
 }
+.Product_img{
+    width: 143px;
+    margin-top: 10px;
+}
+.Product_body{
+    text-align: initial;
+    margin-left: 23px;
+}
+.Card-headers{
+    color: orange;
+    font-size: 27px;
+    text-align: initial;
+}
+.row.Product_list {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.opendiv{
+    display: block;
+        width: 100px;
+        color: wheat;
+        background-color: gray;
+    
+}
+.closediv{
+    display: none;
+}
+
+.modalClass > div > div {
+    width: 48%;
+    top: 50px;
+    left: 194px;
+    height: 49px;
+    text-align: center;
+
+}
+/* .popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+} */
+
+/* The actual popup */
+/* .popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+} */
+
+/* Popup arrow */
+/* .popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+} */

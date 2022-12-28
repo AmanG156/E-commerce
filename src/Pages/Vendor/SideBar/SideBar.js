@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import "./SideBar.css";
-import icon from "../../../images/icon.png";
+import icon from "../../../assests/icon.png";
 
 
 const Sidebar = () => {

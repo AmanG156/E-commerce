@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ResetPassword.css";
-import forgotpwd from "../images/forgotpwd.png";
+import forgotpwd from "../assests/forgotpwd.png";
 import { useNavigate ,useLocation} from "react-router-dom";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ export default function ResetPassword() {
     Password: "",CPassword:""
   });
   let {state}= useLocation()
-  const [email,setEmail]= useState(state?.email)
+  const email= useState(state?.email)
 
   const  handleInput = (event) => {
     setData1({ ...data1, [event.target.name]: event.target.value });
@@ -21,7 +21,7 @@ export default function ResetPassword() {
   };
   const navigate = useNavigate()
   const handleSubmit = () => {
-    console.log(data1);
+    // console.log(data1);
     if(data1.Password===data1.CPassword){
       if (data1) {
         alert("Form is Submitted");
@@ -67,7 +67,7 @@ export default function ResetPassword() {
                       </div>
 
                       <div className="col-md-6 col-lg-6 col-xl-5 order-2 " style={{marginLeft:"auto"}}>
-                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 reset_text">
                           Reset Password
                         </p>
 

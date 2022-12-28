@@ -1,12 +1,10 @@
 .detail_div{
     /* width: 1056px; */
-height: 715px;
+height: 500px;
 margin-top: 43px;
 margin-left: -62px;
 margin-bottom: 20px;
-
 background: #FFFFFF;
-opacity: 0.5;
 box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
 border-radius: 19px;
 }
@@ -36,7 +34,7 @@ border-radius: 19px;
     margin-left: -30px;
 }
 .VProduct_Card {
-    width: 320px;
+    width: 345px;
     margin-left: 30px;
 }
 .Card_heading{
@@ -44,4 +42,22 @@ border-radius: 19px;
     margin-left: 30px;
     margin-bottom: 45px;
     padding-top: 26px;
+}
+.Product_details_div{
+    margin-right: 15px;
+}
+@media screen and (max-width:767px) {
+    .Product_details_div{
+        width: 92%;
+        margin: 0 auto !important;
+    
+    }
+    .VProduct_Card{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .detail_div {
+        margin: 0px;
+    }
+   
 }

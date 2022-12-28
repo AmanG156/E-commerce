@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
-import icon from "../images/icon.png";
 import { Link } from "react-router-dom";
 import "./MyOrder.css";
-import { FaUser, FaShoppingBag } from "react-icons/fa";
 import Footer from "./Footer";
-import watchimg from "../images/watchimg.webp";
+import watchimg from "../assests/watchimg.webp";
 import axios from "axios";
 import Header from "./Header";
 
 export default function MyProfile() {
   useEffect(()=>{
     axios 
-    .post("https://ecommercewebap.herokuapp.com/api/getOrderList")
+    .post("http://35.154.48.64:3500/api/getOrderList")
     .then(function(response){
       console.log(response)
     })
@@ -27,7 +25,7 @@ export default function MyProfile() {
       <div style={{ borderBottom: "4px solid" }}></div>
       <div className="container profile_row">
         <div className="row ">
-          <div className="col-3">
+          <div className="col-lg-3 col-md-3 col-sm-12 ">
             <div className="side_bar">
               <h3 className=" card profile">My Profile</h3>
               <Link to="/Pages/MyOrder">
@@ -41,7 +39,7 @@ export default function MyProfile() {
               </Link>
             </div>
           </div>
-          <div className="col-9">
+          <div className="col-lg-9 col-md-12 col-sm-12">
             <div className="card card_items">
               <div
                 className="card-header"
@@ -50,7 +48,7 @@ export default function MyProfile() {
                 My Orders
               </div>
               <div className="card-body">
-                <img src={watchimg} style={{ width: "20%" }} />
+                <img src={watchimg} alt="" style={{ width: "20%" }} />
                 <div className="productinfo">
                   <p>Smartwatch Definition DO6 Smart Band Exb3 Smartband</p>
                   <h6 style={{ marginTop: "22px", color: "red" }}>
@@ -62,7 +60,7 @@ export default function MyProfile() {
               </div>
             </div>
             <div className="card-body Myorder_body ">
-              <img src={watchimg} style={{ width: "20%" }} />
+              <img src={watchimg} alt="" style={{ width: "20%" }} />
               <div className="productinfo">
                 <p>Smartwatch Definition DO6 Smart Band Exb3 Smartband</p>
                 <h6 style={{ marginTop: "22px", color: "red" }}>
@@ -73,8 +71,8 @@ export default function MyProfile() {
               <h3 style={{ fontSize: "21px", marginTop: "20px", marginRight: "12px" }}>Remove</h3>
             </div>
             <div className="card-body Myorder_body ">
-              <img src={watchimg} style={{ width: "20%" }} />
-              <div className="productinfo">
+              <img src={watchimg} alt="" style={{ width: "20%" }} />
+              <div className="Myorder_info">
                 <p>Smartwatch Definition DO6 Smart Band Exb3 Smartband</p>
                 <h6 style={{ marginTop: "22px", color: "red" }}>
                   Selling Fast!

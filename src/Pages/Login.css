@@ -21,27 +21,51 @@
     margin-left: -206px !important;
     width: 133px !important;
 }
-.remember{
-    margin-right: 233px;
+/* .remember{
+    margin-right: 237px;
+    margin-top: 23px;
+} */
+.Login_parent{
+    position: relative;
 }
-.Login_btn{
-    margin-right: 131px;
-    margin-top: 22px;
-    margin-bottom: revert;
+.Lsignup{
+    color: black;
+    text-decoration: auto;
 }
 .login_body{
-    margin-left: auto;
-    margin-top: -64px !important;
+    display: flex;
+    align-items: center;
+    padding-left: 83px !important;
 }
 .login_icon{
     position: absolute;
-    top: 163px;
-    left: 548px;
+    top: 24px;
+    left: 15px;
 }
 .login_icons{
     position: absolute;
-    top: 242px;
-    left: 546px;
+    top: 24px;
+    left: 15px;
+}
+.Login_container{
+    width: 100%;
+}
+.Have_an{
+ 
+    text-align: left;
+}
+h1.Login_btn {
+    text-align: left;
+    margin: 23px 1.5rem;
+}
+.inputLogin_field{
+    padding-left: 41px !important;
+    margin-top: 14px;
+}
+.LOginbtn_div{
+    margin-left: 0 !important;
+    text-align: left;
+    display: block !important;
 }
 @media screen and (max-width: 700px) {
     .login{
@@ -56,21 +80,26 @@
    .remember{
     /* margin-right: 304px; */
     display: flex;
+    margin-top: 30px;
+    margin-left: 12px;
    }
    .box{
     margin-top: 6px !important;
    }
    .Have_an{
-    margin-right: 179px;
+   margin-left: 12px;
  }
- .login_icon {
-
-    top: 543px;
-    left: 28px;
+ .boxes{
+    margin-left: 0px ;
  }
- .login_icons {
-    position: absolute;
-    top: 621px;
-    left: 29px;
- }
+.Have_an{
+    text-align: initial;
+}
+.login_body {
+    display: block;
+    padding-left: 0px !important;
+}
+h1.Login_btn{
+    margin-left: 4px;
+}
   }

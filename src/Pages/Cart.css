@@ -1,5 +1,5 @@
 .cart_items{
-    width: 1004px !important;
+    /* width: 1004px !important; */
     margin-top: 27px !important;
 }
 .cart_body{
@@ -20,9 +20,20 @@
     box-shadow: 0px 0px 5px #ccc; 
 }
 .cart_price{
-    margin-top: 101px;
+    margin-top: 62px;
     margin-left: -143px;
 
+}
+.productinfo {
+    text-align: left;
+    width: 55%;
+    display: flex;
+    align-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+.productinfo h6, .productinfo h5, .productinfo div, .productinfo p {
+    width: 100%;
 }
 .summary_title{
     margin-left: -88px;
@@ -46,7 +57,7 @@
     cursor: pointer;
 }
 .quantity_field{
-    width: 20px;
+    width: 27px;
     height: 20px;
 }
 .card-text{
@@ -54,4 +65,25 @@
 }
 .card-title{
     color: #FAB143;
+}
+.remove_currency{
+    text-align: end;
+}
+
+@media screen and (max-width: 767px){
+    .cart_div{
+        display: flex;
+        flex-wrap: wrap;
+     }
+     .contain{
+        max-width: 98%;
+     }
+     .productinfo{
+        width: 60%;
+    }
+    .remove_currency{
+        width: 20%;
+        text-align: right;
+    }
+
 }

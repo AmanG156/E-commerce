@@ -1,4 +1,4 @@
-/* .VSignupfield{
+.VSignupfield{
 box-sizing: border-box;
 
 width: 446px !important;
@@ -73,4 +73,24 @@ font-size: 17px;
 line-height: 22px;
  
 color: black;
-} */
+}
+@media screen  and (max-width:767px){
+    .VSignUp_div{
+        width: 100%;
+        left: 0;
+        top:0;
+    }
+    .VSignUpfield{
+        
+        width: 100% !important;
+        margin-left: 0;
+    }
+    .VSignup {
+        width: 77%;
+        margin: 0 auto;
+    }
+   
+    .border{
+        margin-left: 171px;
+    }
+  }

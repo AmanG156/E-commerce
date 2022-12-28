@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import "./Otp.css";
-import forgotpwd from "../images/forgotpwd.png";
+import forgotpwd from "../assests/forgotpwd.png";
 import axios from "axios";
-import { Link,useNavigate ,useLocation} from "react-router-dom";
+import {useNavigate ,useLocation} from "react-router-dom";
 export default function Otp({route}) {
  const  [otp,setOtp] = useState({
   otp:""
  })
  let {state}= useLocation()
-const [email,setEmail]= useState(state?.email)
+const email= useState(state?.email)
 const handleInput = (event) => {
   setOtp(event.target.value);
 };
@@ -20,19 +20,23 @@ const handleReset = () => {
 
 const handleSubmit = (event) => {
   event.preventDefault()
-  console.log(otp);
+  // console.log(otp);
   if (otp !== "") {
     if (otp) {
        let payload = {
         email:email,
      otp:Number(otp)}
        axios
-       .post("https://ecommercewebap.herokuapp.com/api/verifyOtp", payload)
+       .post("http://35.154.48.64:3500/api/verifyOtp", payload)
        .then( (response)=>{
+        console.log(response)
         if(response.data.msg === "otp verified"){
           navigate("/Pages/ResetPassword",{state:{"email":email}})
-          alert("OTP Verified")
+          // alert("OTP Verified")
         }
+      else {
+        alert("Invalid OTP")
+      }
        })
        .catch((error)=> {console.log(error)
       alert("Otp verification failed")})
@@ -41,7 +45,7 @@ const handleSubmit = (event) => {
     }
   } else {
     alert("Invalid Otp");
-    // setShowerror(true);
+  
   }
 };
   return (

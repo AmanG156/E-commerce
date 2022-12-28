@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Signup.css";
-import signup from "../images/Signup.png";
+import signup from "../assests/Signup.png";
 import axios from "axios";
 import { FaUser, FaEnvelopeOpen, FaPhoneVolume ,FaLock} from "react-icons/fa";
 
@@ -48,7 +48,7 @@ export default function Signup() {
           password: data1.password,
         };
         axios
-          .post("https://ecommercewebap.herokuapp.com/api/signup", payload)
+          .post("http://35.154.48.64:3500/api/signup", payload)
           .then((val) => console.log(val),
           navigate("/Pages/Login"))
           .catch();

@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import icon from "../images/icon.png";
-import profilepic from "../images/profilepic.png";
+// import icon from "../images/icon.png";
+import profilepic from "../assests/profilepic.png";
 import "./MyProfile.css";
 import Header from "./Header";
 import {
   FaUser,
-  FaShoppingBag,
   FaEnvelopeOpen,
   FaPhoneVolume,
   FaAddressCard,
 } from "react-icons/fa";
 import Footer from "./Footer";
 import axios from "axios";
-import { Routes, Route, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 export default function MyProfile() {
   const [showerror, setShowerror] = useState(false);
   const [image, setImage] = useState(profilepic);
@@ -50,7 +49,7 @@ export default function MyProfile() {
     };
     axios
       .post(
-        "https://ecommercewebap.herokuapp.com/api/getUserDetails",
+        "http://35.154.48.64:3500/api/getUserDetails",
         {},
         { headers: headers }
       )
@@ -102,7 +101,7 @@ export default function MyProfile() {
       };
 
       axios
-        .put("https://ecommercewebap.herokuapp.com/api/updateProfile", formData, {
+        .put("http://35.154.48.64:3500/api/updateProfile", formData, {
           headers: headers,
         })
         .then((val) => console.log(val))
@@ -154,7 +153,7 @@ export default function MyProfile() {
                 }}
               >
                 <div style={{ maxWidth: "268px" }}>
-                  <img src={path} className="profilepic" />
+                  <img src={path} alt="" className="profilepic" />
                 </div>
                 <div
                   className=" "
@@ -164,8 +163,8 @@ export default function MyProfile() {
                     marginLeft: "186px",
                   }}
                 >
-                  <h3>ABC</h3>
-                  <p>abc@123gmail.com</p>
+                  <h3>{data1.email}</h3>
+                  <p>{data1.email}</p>
                 </div>
               </div>
             </div>
@@ -241,6 +240,7 @@ export default function MyProfile() {
                   : null}{" "}
               </p>
               <br />
+              {console.log("axfjsjfsjd",data1)}
               <div className="inputicon">
                 <textarea
                   placeholder="Enter Your Address"

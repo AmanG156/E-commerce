@@ -18,7 +18,7 @@ export default function Cart() {
     };
     axios
       .post(
-        "https://ecommercewebap.herokuapp.com/api/getCartitems",
+        "http://35.154.48.64:3500/api/getCartitems",
         {},
         { headers: headers }
       )
@@ -37,6 +37,7 @@ export default function Cart() {
       })
       .catch();
   }, []);
+ 
   const handleDecrement = (item, event) => {
     event.preventDefault();
     if (item.quantity === 1) {
@@ -93,7 +94,7 @@ export default function Cart() {
     };
     console.log(payload);
     axios
-      .post("https://ecommercewebap.herokuapp.com/api/removeFromCart", payload, {
+      .post("http://35.154.48.64:3500/api/removeFromCart", payload, {
         headers: headers,
       })
       .then(function (response) {
@@ -110,30 +111,30 @@ export default function Cart() {
         <Header />
       </div>
       <div style={{ borderBottom: "4px solid" }}></div>
-      <div className="container">
+      <div className="container contain">
         <div className="row">
-          <div className="col-md-10">
+          <div className="col-md-9 cart_div">
             <div className="card cart_items">
               <div
                 className="card-header"
                 style={{ textAlign: "left", color: "orange" }}
               >
-                My Orders
+                My Cart
               </div>
               {cart.map((item, index) => {
                 return (
                   <div key={index} className="card-body cart_display">
                     <img
-                      src={`https://ecommercewebap.herokuapp.com/${item.image}`}
+                      src={`http://35.154.48.64:3500/api/${item.image}`}
                       alt={"Noimage"}
                       style={{ width: "20%" }}
                     />
                     <div className="productinfo">
                       <p>{item.name}</p>
-                      <h6 style={{ marginTop: "22px", color: "red" }}>
+                      <h6 style={{  color: "red" }}>
                         Selling Fast!
                       </h6>
-                      <h5 style={{ marginTop: "34px" }}>Quantity</h5>
+                      <h5 >Quantity</h5>
                       <div className=" col add-minus-quantity">
                         <span
                           onClick={(event) => {
@@ -156,6 +157,7 @@ export default function Cart() {
                         />
                       </div>
                     </div>
+                    <div className="remove_currency">
                     <h1
                       onClick={() => {
                         remove(item);
@@ -173,17 +175,18 @@ export default function Cart() {
                         maximumFractionDigits: 2,
                         style: "currency",
                         currency: "INR",
-                      })}
+                      })} 
                     </h5>
+                    </div>
                   </div>
                 );
               })}
             </div>
           </div>
-          <div className="col-md-2 ">
+          <div className="col-md-3 ">
             <div
               className="card cart_card"
-              style={{ width: "18rem", height: "260px" }}
+             
             >
               <div className="card-body cart_summary">
                 <ul>
@@ -195,7 +198,7 @@ export default function Cart() {
                       <span>item Cost : </span>
                       <span>{total}</span>
                     </li>
-                    <br />
+                     
                     <li>
                       <span>Order total : </span>
                       <span>{total}</span>

@@ -1,11 +1,11 @@
 import React from "react";
-import icon from "../images/icon.png";
+import icon from "../assests/icon.png";
 import "./Footer.css"
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div >
+    <div className="background" >
       <div className="container">
         <div className="row">
           <div className="col block_a">

@@ -1,13 +1,16 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { FaUser, FaShoppingBag } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import watchimg from "../images/watchimg.webp";
 import axios from "axios";
-import icon from "../images/icon.png";
+import icon from "../assests/icon.png";
 import Footer from "./Footer";
-import Header from "./Header";
 import "./Products.css";
+// import { Modal, ModalBody, Row, Col } from "reactstrap";
 import { AppContext, useGlobalContext } from "../context/use-context";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
 export default function Products() {
   const [product, setProduct] = useState([]);
@@ -18,18 +21,22 @@ export default function Products() {
   const [loading, setLoading] = useState(false);
   const { login, setLogin, user } = useGlobalContext();
   const [isReadMore, setIsReadMore] = useState(true);
+  const [show1, setShow1] = useState(false);
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
   const navigate = useNavigate;
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
-
+  // const [istoggle, setistoggle] =useState(false)
+  setTimeout(handleClose1, 3000)
   useEffect(() => {
     let headers = {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
     axios
       .post(
-        "https://ecommercewebap.herokuapp.com/api/getCartitems",
+        "http://35.154.48.64:3500/api/getCartitems",
         {},
         { headers: headers }
       )
@@ -37,14 +44,14 @@ export default function Products() {
         setCart(val.data);
       });
     axios
-      .get("https://ecommercewebap.herokuapp.com/api//allCategory")
+      .get("http://35.154.48.64:3500/api/allCategory")
       .then((val) => {
         console.log(val);
         setCategory(val.data);
       })
       .catch();
     axios
-      .get("https://ecommercewebap.herokuapp.com/api/allProducts")
+      .get("http://35.154.48.64:3500/api/allProducts")
       .then((val) => {
         console.log(val);
         setProduct(val.data);
@@ -52,7 +59,14 @@ export default function Products() {
       })
       .catch();
   }, [loading]);
-
+  const Quantity_Number = () => {
+    let sum = 0;
+    cart.forEach((e) => {
+      sum += Number(e.quantity);
+    });
+    console.log("sum", sum);
+    return sum;
+  };
   const add = (item) => {
     setCart((cart) => [...cart, item]);
     let payload = {
@@ -64,7 +78,7 @@ export default function Products() {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
     axios
-      .post("https://ecommercewebap.herokuapp.com/api/addToCart", payload, {
+      .post("http://35.154.48.64:3500/api/addToCart", payload, {
         headers: headers,
       })
       .then(function (response) {
@@ -104,11 +118,9 @@ export default function Products() {
     setProduct(data);
     console.log(lowerCase);
   };
+ 
   return (
     <div>
-      {/* <div className="Header">
-        <Header />
-      </div> */}
       <nav className="navbar bg-light header">
         <div className="container-fluid">
           <img src={icon} style={{ marginLeft: "40px", marginTop: "6px" }} />
@@ -164,7 +176,7 @@ export default function Products() {
             <div className="side_List">
               <div className=" categories">Categories </div>
               <div className="Checkbox">
-                <input type="checkbox" />
+                <input type="checkbox" onClick={()=>setProduct(allProducts)}/>
                 <label>All Deals</label>
                 <br />
                 {category.map((v) => (
@@ -200,24 +212,18 @@ export default function Products() {
               </div>
             </div>
           </div>
-          <div className="col col-lg-9 product_col">
+          <div className="col col-lg-8 product_col">
             <div className="Card-headers">Products</div>
             <div className="row Product_list">
               {product.map((item, index) => {
                 return (
                   <div key={index} className="col">
-                    <div
-                      className="card "
-                      style={{
-                        width: "18rem",
-                        marginTop: "20px",
-                        display: "flex",
-                      }}
-                    >
+                    <div className="card_Product ">
                       <img
                         src={`https://ecommercewebap.herokuapp.com/${item.image}`}
+                        className="Product_img"
                       />
-                      <div className="card-body">
+                      <div className="Product_body">
                         <h5 className="card-title">
                           {" "}
                           {isReadMore ? item.name.slice(0, 10) : item.name}
@@ -241,18 +247,30 @@ export default function Products() {
                             )}
                           </p>
                         </Link>
-                      </div>
-                      <div className="row">
-                        <div className="col ">
-                          <button
+                        <div className="Product_Price">
+                          {" "}
+                          {item.price.toLocaleString("en-IN", {
+                            maximumFractionDigits: 2,
+                            style: "currency",
+                            currency: "INR",
+                          })}
+                        </div>
+                        <div className="row">
+                          <div className="col popup ">
+                            <button
                             className="btn btn-warning"
                             style={{ width: "128px" }}
+                            data-target="#exampleModalLong"
                             onClick={() => {
                               add(item);
+                             
+                              handleShow1()
                             }}
                           >
                             Add To Cart
                           </button>
+               
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -263,6 +281,12 @@ export default function Products() {
           </div>
         </div>
       </div>
+      <Modal show={show1} onHide={handleClose1} className="modalClass" >
+           
+            <Modal.Body>
+              <h6 >Product Has been Added</h6>
+            </Modal.Body>
+          </Modal>
       <div style={{ marginTop: "20px" }}>
         <Footer />
       </div>

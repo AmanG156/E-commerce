@@ -1,8 +1,8 @@
-import React from 'react'
+ /* eslint-disable */
+ import React from 'react'
 import VHeadersidebar from '../VHeadersidebar/VHeadersidebar'
 import "./OrderManagment.css"
-// import SideBar from '../SideBar/SideBar'
-// import VHeader from '../VHeader/VHeader'
+
 export default function OrderManagment() {
   return (
     <>

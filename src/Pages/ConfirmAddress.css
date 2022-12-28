@@ -24,9 +24,10 @@
     display: block;
     background-color: orange;
 }
-.address_div{
-    margin-left: 128px;
-    margin-top: 45px;
+.Placeorder_div{
+    /* margin-left: 128px; */
+    /* margin-top: 45px; */
+    display: contents;
 }
 .order_items{
     margin-left: 117px;
@@ -45,7 +46,9 @@
     background-color: orange;
     margin-top: 27px;
 }
-
+.address_removebtn{
+    text-align: initial;
+}
 .Add_btn{
     display: flex;
     margin-left: 118px;
@@ -78,6 +81,9 @@
     height: 259px;
     margin-top: 33px;
     margin-left: auto;
+}
+.cart_head{
+    margin-top: 35px;
 }
 .Address_div{
     margin-left: 119px;
@@ -131,4 +137,34 @@ width: 80%;
     display: -webkit-box;
     margin-left: -24px;
     margin-bottom: -18px;
+}
+.Confirm_cart_summary {
+    border: 1px solid;
+    text-align: initial;
+}
+.placeorder_btn{
+    width: 211px;
+    background-color: #FAB143;
+
+}
+@media screen  and (max-width:767px){
+    .address_item{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .address_removebtn{
+        text-align: right;
+    }
+    .Confirm_cart_summary{
+        margin-top: inherit;
+    }
+    .summary_title{
+        margin-left: -88px;
+        margin-top: 0;
+    }
+    .address_div{
+        margin-left: -88px;
+        margin-top: 0;
+
+    }
 }

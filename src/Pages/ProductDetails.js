@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import icon from "../images/icon.png";
-import { Link, useParams } from "react-router-dom";
+// import icon from "../images/icon.png";
+import {  useParams } from "react-router-dom";
 import "./ProductDetails.css";
-import watchimg from "../images/watchimg.webp";
-import { FaUser, FaShoppingBag } from "react-icons/fa";
+
 import Footer from "./Footer";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import axios from "axios";
-import { AppContext, useGlobalContext } from "../context/use-context";
+import {  useGlobalContext } from "../context/use-context";
 import Header from "./Header";
-import Products from "./Products";
+// import Products from "./Products";
 
 export default function PaymentDetails() {
   const [product, setProduct] = useState({});
@@ -25,7 +24,7 @@ export default function PaymentDetails() {
   useEffect(() => {
     let payload = { id: id, category: category };
     axios
-      .post("https://ecommercewebap.herokuapp.com/api/getProductDetails", payload)
+      .post("http://35.154.48.64:3500/api/getProductDetails", payload)
       .then(function (response) {
         console.log(response);
         setProduct(response.data[0]);
@@ -50,7 +49,7 @@ export default function PaymentDetails() {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
     axios
-      .post("https://ecommercewebap.herokuapp.com/api/addToCart", payload, {
+      .post("http://35.154.48.64:3500/api/addToCart", payload, {
         headers: headers,
       })
       .then(function (response) {
@@ -71,29 +70,29 @@ export default function PaymentDetails() {
         <div className="  col ">
           <div>
             <img
-              src={`https://ecommercewebap.herokuapp.com/${product.image}`}
+              src={`http://35.154.48.64:3500/api/${product.image}`}
               alt={"Noimage"}
               className="img"
             />
           </div>
           <div className="images_details">
             <img
-              src={`https://ecommercewebap.herokuapp.com/${product.image}`}
+              src={`http://35.154.48.64:3500/api/${product.image}`}
               alt={"Noimage"}
               className="images"
             />
             <img
-              src={`https://ecommercewebap.herokuapp.com/${product.image}`}
+              src={`http://35.154.48.64:3500/api/${product.image}`}
               alt={"Noimage"}
               className="images"
             />
             <img
-              src={`https://ecommercewebap.herokuapp.com/${product.image}`}
+              src={`http://35.154.48.64:3500/api/${product.image}`}
               alt={"Noimage"}
               className="images"
             />
             <img
-              src={`https://ecommercewebap.herokuapp.com/${product.image}`}
+              src={`http://35.154.48.64:3500/api/${product.image}`}
               alt={"Noimage"}
               className="images"
             />
@@ -165,7 +164,7 @@ export default function PaymentDetails() {
                
               >
                 <img
-                  src={`https://ecommercewebap.herokuapp.com/${item.image}`}
+                  src={`http://35.154.48.64:3500/api/${item.image}`}
                   alt={"Noimage"}
                   className="card-img-top"
                 />

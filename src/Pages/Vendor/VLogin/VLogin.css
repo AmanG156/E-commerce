@@ -1,4 +1,4 @@
-/* .VLoginfield{
+.VLoginfield{
     box-sizing: border-box;
     width: 422px !important;
     height: 47px;
@@ -91,4 +91,26 @@ align-items: center !important;
 text-decoration-line: underline;
 
 color: #222222;
-      } */
+      }
+      @media screen  and (max-width:767px){
+        .VLogin_div{
+            width: 100%;
+            left: 0;
+            top:0;
+        }
+        .VSignupfield{
+            
+            width: 100% !important;
+            margin-left: 0;
+        }
+        .VLogin {
+            width: 57%;
+            margin: 0 auto;
+        }
+        .VSwtich_forgot{
+            margin-right: 0;
+        }
+        .border{
+            margin-left: 171px;
+        }
+      }

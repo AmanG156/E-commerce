@@ -1,13 +1,15 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import "./ConfirmAddress.css";
-import { Modal, ModalHeader, ModalBody, Row, Col } from "reactstrap";
+import { Modal, ModalBody, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useGlobalContext } from "../context/use-context";
-import { FaTrash, FaPlus, FaMinus } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
+
 export default function ConfirmAddress() {
   const [modal, setModal] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -19,15 +21,15 @@ export default function ConfirmAddress() {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const { setCart, cart } = useGlobalContext();
- const [placeorder,setPlaceorder]=useState({
-   address:"",
-   ProductList:[],
-   cartsummary:{
-    itemCost:"",
-    orderTotal:"",
-    cartSubtotal:""
-   },
-})
+  const [placeorder, setPlaceorder] = useState({
+    address: "",
+    ProductList: [],
+    cartsummary: {
+      itemCost: "",
+      orderTotal: "",
+      cartSubtotal: "",
+    },
+  });
   const [address, setAddress] = useState({
     Address: "",
     ZipCode: "",
@@ -47,7 +49,7 @@ export default function ConfirmAddress() {
     };
     axios
       .post(
-        "https://ecommercewebap.herokuapp.com/api/getCartitems",
+        "http://35.154.48.64:3500/api/getCartitems",
         {},
         { headers: headers }
       )
@@ -61,30 +63,28 @@ export default function ConfirmAddress() {
           v.quantity = 1;
         });
         setTotal(t);
-        console.log("cart",val);
+        console.log("cart", val);
         setCart(val.data);
-        
-          creatpayload(val.data)
 
+        creatpayload(val.data);
       })
       .catch();
-     
   }, []);
-  const creatpayload =(cartdata)=>{
-    console.log("payload",userdata)
+  const creatpayload = (cartdata) => {
+    console.log("payload", userdata);
     let payload = {
-          email:userdata.email,
-          address:userdata.address[0],
-          ProductList:cartdata,
-          cartsummary:{
-            itemCost:"",
-            orderTotal:"",
-            cartSubtotal:""
-          }
-    }
-    console.log("payload",payload)
-    setPlaceorder(payload)
-  }
+      email: userdata.email,
+      address: userdata.address[0],
+      ProductList: cartdata,
+      cartsummary: {
+        itemCost: "",
+        orderTotal: "",
+        cartSubtotal: "",
+      },
+    };
+    console.log("payload", payload);
+    setPlaceorder(payload);
+  };
   const handleDecrement = (item, event) => {
     event.preventDefault();
     if (item.quantity === 1) {
@@ -142,7 +142,7 @@ export default function ConfirmAddress() {
     };
     console.log(payload);
     axios
-      .post("http://localhost:3500/api/removeFromCart", payload, {
+      .post("http://35.154.48.64:3500/api/removeFromCart", payload, {
         headers: headers,
       })
       .then(function (response) {
@@ -168,7 +168,7 @@ export default function ConfirmAddress() {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
     axios
-      .put("https://ecommercewebap.herokuapp.com/api/updateProfile", payload, {
+      .put("http://35.154.48.64:3500/api/updateProfile", payload, {
         headers: header,
       })
       .then()
@@ -190,7 +190,7 @@ export default function ConfirmAddress() {
   const getUsserDetails = (headers) => {
     axios
       .post(
-        "https://ecommercewebap.herokuapp.com/api/getUserDetails",
+        "http://35.154.48.64:3500/api/getUserDetails",
         {},
         { headers: headers }
       )
@@ -217,7 +217,6 @@ export default function ConfirmAddress() {
     setCities(cities);
   };
   const editBox = (e, i) => {
-    // alert("editId",editId)
     setEditId(Number(i));
     let data = addresslist[i];
     setAddress(data);
@@ -238,11 +237,9 @@ export default function ConfirmAddress() {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       };
       axios
-        .put(
-          "https://ecommercewebap.herokuapp.com/api/updateProfile",
-          payload,
-          { headers: header }
-        )
+        .put("http://35.154.48.64:3500/api/updateProfile", payload, {
+          headers: header,
+        })
         .then()
         .catch();
     }
@@ -260,23 +257,17 @@ export default function ConfirmAddress() {
     var header = {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-    // useEffect(()=>{
-
-    // })
     axios
-      .put("https://ecommercewebap.herokuapp.com/api/updateProfile", payload, {
+      .put("http://35.154.48.64:3500/api/updateProfile", payload, {
         headers: header,
       })
       .then()
       .catch();
   };
-  // setServiceList((prev: any) =>
-  //     prev.map((item: any, index: any) => (index === todoId ? newValue : item))
-  //   );
+ 
   const deleteAddress = (e, i) => {
-    alert("sdjskjdsk");
     let arr = [...addresslist];
-    // arr.splice(i, 1);
+ 
     console.log(arr);
     const removedArr = [...addresslist].filter((todo, ind) => ind !== i);
     setAddresslist(removedArr);
@@ -290,32 +281,30 @@ export default function ConfirmAddress() {
     var header = {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-    // useEffect(()=>{
-
-    // })
     axios
-      .put("https://ecommercewebap.herokuapp.com/api/updateProfile", payload, {
+      .put("http://35.154.48.64:3500/api/updateProfile", payload, {
         headers: header,
       })
       .then()
       .catch();
     // setAddresslist(arr);
   };
-  const handleEditSubmit = (e)=>{
-    e.preventDefault()
-    let data = addresslist
-    data[editId]= address
-    setAddresslist(data)
-    setEdit(false)
-  }
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    let data = addresslist;
+    data[editId] = address;
+    setAddresslist(data);
+    setEdit(false);
+  };
 
-  const selectAddress=(index)=>{
-    let add = addresslist[index]
-    let payload = placeorder
-    payload.address = add
-    console.log(payload)
-    setPlaceorder(payload)
-  }
+  const selectAddress = (index) => {
+    let add = addresslist[index];
+    let payload = placeorder;
+    payload.address = add;
+    console.log(payload);
+    setPlaceorder(payload);
+  };
+
   // const handleCheckout = async (id, price) => {
   //   let payload = {
   //     subscriptionId: id,
@@ -334,8 +323,8 @@ export default function ConfirmAddress() {
   //   console.log(status);
     
 
-    /* global Stripe */
-  //   var stripe = Stripe("pk_test_51MCKZXSIuZBNkTWn2rmdQLlbLIDcOTPEmzIiiO8kUgbodWyo27S3UpJ9hVEH11mzjXzJuZuBtm7A26vGMzkxLtzV003N9FBBhX");
+  //   /* global Stripe */
+  //   var stripe = Stripe("pk_test_51MJWlySJrdRwEYvIrdpWwR2sip7fa3h9RcGcuZaPzKvcvHVMKxcdni7zPpayxakPIavV0eiRrFMJz51EIJSYl0hA00kT1AY6YE");
   //   if (status === 200) {
   //     alert("Going to Checkout Page");
   //     stripe.redirectToCheckout({ sessionId: sessionId });
@@ -351,20 +340,26 @@ export default function ConfirmAddress() {
         <Header />
       </div>
       <div style={{ borderBottom: "4px solid" }}></div>
-      <div className="row">
+      <div className="row address_box">
         <div className="col-md-9">
           {addresslist.map((v, i) => {
             console.log(v);
             return (
               <div key={i} className="Address_div">
-                <input type="radio" onClick={()=>selectAddress(i)} defaultChecked={i===0?true:false} name="check" className="check_btn"/>
+                <input
+                  type="radio"
+                  onClick={() => selectAddress(i)}
+                  defaultChecked={i === 0 ? true : false}
+                  name="check"
+                  className="check_btn"
+                />
 
                 <h3 className="Address_heading">{userdata.name}</h3>
 
                 <h5 className="detail_address">
                   {v.Address}, {v.City}, {v.ZipCode}, {v.State}, {v.Country}
                 </h5>
-        
+
                 <div className="Edit_icon">
                   {" "}
                   <span onClick={(e) => editBox(e, i)}>
@@ -550,11 +545,10 @@ export default function ConfirmAddress() {
                         }}
                         className="Country_field"
                         name="Country"
-                      
                       >
                         <option value="">selectCountry</option>
                         {country.map((items) => (
-                          <option key={items} value={getCountry}  >
+                          <option key={items} value={getCountry}>
                             {items}
                           </option>
                         ))}
@@ -577,7 +571,7 @@ export default function ConfirmAddress() {
                       >
                         <option value="">selectState</option>
                         {getState.map((items) => (
-                          <option key={items} value={selectedState} >
+                          <option key={items} value={selectedState}>
                             {items}
                           </option>
                         ))}
@@ -618,29 +612,29 @@ export default function ConfirmAddress() {
             </ModalBody>
           </Modal>
           <div>
-            {/* <button className="Add_btn" onClick={()=>setModal(true)}>Add Address</button> */}
+    
             <h3 className="Add_btn" onClick={() => setModal(true)}>
               Add New Address
             </h3>
-            {/* <div className="plus_icon"><FaPlus/></div> */}
+      
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-3 Placeorder_div">
           <div
             className="card Confirm_card"
-            style={{ width: "18rem", height: "260px" }}
+            style={{ width: "18rem", height: "260px" , marginRight:"97px" }}
           >
-            <div className="card-body cart_summary">
+            <div className="card-body confirm_cart_summary">
               <ul>
                 <li className="summary_title">
-                  <h5 className="card-title">CartSummary</h5>
+                  <h5 className="card-title cart_head">CartSummary</h5>
                 </li>{" "}
                 <p className="card-text">
                   <li>
                     <span>item Cost : </span>
                     <span>{total}</span>
                   </li>
-                  <br />
+                  
                   <li>
                     <span>Order total : </span>
                     <span>{total}</span>
@@ -653,7 +647,7 @@ export default function ConfirmAddress() {
                 </p>
                 <div>
                   <Link to="/Pages/ConfirmAddress">
-                    <button className="Placeorder_btn btn btn-warning" >
+                    <button className="placeorder_btn btn btn-warning" >
                       Place Order
                     </button>
                   </Link>
@@ -663,7 +657,7 @@ export default function ConfirmAddress() {
           </div>
         </div>
       </div>
-      <div className="col-md-10">
+      <div className="col-lg-10 address_item address_div">
         <div className="card cart_item">
           <div
             className="card-header"
@@ -681,32 +675,20 @@ export default function ConfirmAddress() {
                 />
                 <div className="productinfo">
                   <p>{item.name}</p>
-                  <h6 style={{ marginTop: "22px", color: "red" }}>
+                  <h6 style={{ color: "red" }}>
                     Selling Fast!
                   </h6>
-                  <h5 style={{ marginTop: "34px" }}>Quantity</h5>
+                  <h5>Quantity</h5>
                   <div className=" col add-minus-quantity">
-                    {/* <span
-                          onClick={(event) => {
-                            handleDecrement(item, event);
-                          }}
-                        >
-                          <FaMinus className="minus_icon" /> */}
-                    {/* </span> */}
                     <input
                       type="text"
                       placeholder="0"
                       className="quantity_field"
                       value={item.quantity}
                     />
-                    {/* <FaPlus
-                          className="plus_icon"
-                          onClick={(event) => {
-                            handleIncrement(item, event);
-                          }}
-                        /> */}
                   </div>
                 </div>
+                <div className="address_removebtn">
                 <h1
                   onClick={() => {
                     remove(item);
@@ -715,6 +697,7 @@ export default function ConfirmAddress() {
                     fontSize: "20px",
                     marginTop: "22px",
                     cursor: "pointer",
+                    textAlign:"right"
                   }}
                 >
                   Remove
@@ -726,6 +709,7 @@ export default function ConfirmAddress() {
                     currency: "INR",
                   })}
                 </h5>
+                </div>
               </div>
             );
           })}

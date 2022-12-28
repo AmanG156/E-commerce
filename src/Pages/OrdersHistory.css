@@ -13,7 +13,7 @@
 
     justify-content: space-between;
 }
-.productinfo {
+.product_info {
     text-align: left;
     width: 55%;
     margin-top: 25px;
@@ -31,4 +31,19 @@
     width: 1181px ;
     margin-left: 123px;
     margin-bottom: 36px;
+}
+@media (max-width: 767px){
+    .productinfo{
+        text-align: center;
+        width: 100%;
+    
+    }
+    .card-body.card_body {
+        display: block;
+        width: 100%;
+        margin-left: 0;
+    }
+    .card-body.card_body img {
+        width: 100% !important;
+    }
 }
