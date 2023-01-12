@@ -3,7 +3,6 @@ import "./Signup.css";
 import signup from "../assests/Signup.png";
 import axios from "axios";
 import { FaUser, FaEnvelopeOpen, FaPhoneVolume ,FaLock} from "react-icons/fa";
-
 import {  useNavigate } from "react-router-dom";
 
 export default function Signup() {
@@ -48,7 +47,7 @@ export default function Signup() {
           password: data1.password,
         };
         axios
-          .post("http://35.154.48.64:3500/api/signup", payload)
+          .post("https://ecom-five-pi.vercel.app/api/register", payload)
           .then((val) => console.log(val),
           navigate("/Pages/Login"))
           .catch();

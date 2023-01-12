@@ -36,7 +36,7 @@ export default function Cart() {
         setCart(val.data);
       })
       .catch();
-  }, []);
+  },[]);
  
   const handleDecrement = (item, event) => {
     event.preventDefault();
@@ -196,16 +196,28 @@ export default function Cart() {
                   <p className="card-text">
                     <li>
                       <span>item Cost : </span>
-                      <span>{total}</span>
+                      <span>  {total.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })} </span>
                     </li>
                      
                     <li>
                       <span>Order total : </span>
-                      <span>{total}</span>
+                      <span>  {total.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })} </span>
                     </li>
                     <li>
                       <span> Cart Subtotal : </span>
-                      <span>{total}</span>
+                      <span>  {total.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })} </span>
                     </li>
                     <br />
                   </p>

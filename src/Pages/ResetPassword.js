@@ -28,7 +28,7 @@ export default function ResetPassword() {
        let payload = 
       { email:email,
        password:data1.Password}
-         axios.post("http://localhost:3500/api/resetPassword",payload)
+         axios.post("https://ecom-five-pi.vercel.app/api/forgot-password/",payload)
          .then( (val)=>{console.log(val)
         alert("Password Reseted")})
          navigate("/Pages/Login")

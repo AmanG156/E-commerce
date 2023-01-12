@@ -26,14 +26,14 @@ export default function Footer() {
             </div>
           </div>
           <div className="col block_b">
-            <h3> Compony INFO</h3>
+            <h3 className="FooterHeading"> COMPANY INFO</h3>
             <p>About Us</p>
             <p>Careers</p>
             <p>FAQ</p>
             <p>Feedback</p>
           </div>
           <div className="col block_c">
-            <h3>INFORMATION</h3>
+            <h3  className="FooterHeading">INFORMATION</h3>
             <p>Customer Service</p>
             <p>Woots's Return Policy</p>
             <p>Product Warranty</p>
@@ -41,7 +41,7 @@ export default function Footer() {
             <p>Woot</p>
           </div>
           <div className="col block_d">
-            <h3>HELP</h3>
+            <h3  className="FooterHeading">HELP</h3>
             <p>Facebook</p>
             <p>Twitter</p>
             <p>Forums</p>

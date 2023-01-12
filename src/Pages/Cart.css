@@ -21,7 +21,7 @@
 }
 .cart_price{
     margin-top: 62px;
-    margin-left: -143px;
+    /* margin-left: -143px; */
 
 }
 .productinfo {
@@ -76,7 +76,7 @@
         flex-wrap: wrap;
      }
      .contain{
-        max-width: 98%;
+        max-width: 100%;
      }
      .productinfo{
         width: 60%;

@@ -18,16 +18,19 @@ export default function ForgotPassword() {
     setData1({ email: "" });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     console.log(data1);
     if (data1.email !== "") {
       if (data1) {
          let payload = {
        email:data1.email,}
          axios
-         .post("http://35.154.48.64:3500/api/forgotPassword", payload)
+         .post("https://ecom-five-pi.vercel.app/api/forgot-password/", payload)
          .then( (response)=>{
           if(response.data.status === 200){
+        
             navigate("/Pages/Otp",{state:{"email":data1.email}})
           }
          })
@@ -42,86 +45,7 @@ export default function ForgotPassword() {
   };
 
   return (
-    // <div>
-    //   <section>
-    //     <div className="container h-100 ">
-    //       <div className="row d-flex justify-content-center align-items-center h-100 ">
-    //         <div className="col-lg-12 col-xl-11 ">
-    //           <div className="card text-black ">
-    //             <div className="card-body p-md-5 ">
-    //               <div className="row justify-content-center">
-    //                 <div className="row">
-    //                   <div className="col-md-6">
-    //                     <div className="Login_img col-md-6">
-    //                       <img
-    //                         src={forgotpwd}
-    //                         alt={"NoImage"}
-    //                         width="400"
-    //                         height="400"
-    //                         style={{ marginLeft: "38px", marginTop: "35px" }}
-    //                       />
-    //                     </div>
-    //                   </div>
-
-    //                   <div className="col-md-6 col-lg-6 col-xl-5 order-2 forgot_pwd">
-    //                     <div className="forgot_heading">
-    //                     <p className=" h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 fo ">
-    //                       Forget Password
-    //                     </p>
-    //                     </div>
-
-    //                     <form className="mx-1 mx-md-4">
-    //                       <div className="d-flex flex-row align-items-center mb-4 " style={{marginLeft:"34px"}}>
-                            
-    //                         <div className="form-outline flex-fill mb-0">
-    //                           <input
-    //                             type="email"
-    //                             id="form3Example3c"
-    //                             name="email"
-    //                             className="form-control"
-    //                             placeholder="Email"
-    //                             value={data1.email}
-    //                             onChange={(event) => {
-    //                               handleInput(event);
-    //                             }}
-    //                           />
-    //                           <FaEnvelopeOpen className="mail_icon"/>
-    //                           <p style={{ color: "red" }}>
-    //                             {showerror && data1.email === ""
-    //                               ? "Please fill valid entry"
-    //                               : null}{" "}
-    //                           </p>
-    //                         </div>
-    //                       </div>
-
-    //                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-    //                         <Link><button
-    //                           type="button"
-    //                           className=" reset_btn btn btn-warning btn-lg"
-    //                           style={{
-    //                             width: "240px",
-    //                             marginTop: "13px",
-    //                           }}
-    //                           onClick={() => {
-    //                             handleSubmit();
-    //                           }}
-    //                         >
-    //                           Reset Password
-    //                         </button>
-    //                         </Link>
-    //                       </div>
-    //                     </form>
-    //                   </div>
-    //                   {/* </div> */}
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </section>
-    // </div>
+    
     <section className='forgetpass'>
     <div className='more-size'>
     <div className='forgetbox'>
@@ -132,7 +56,7 @@ export default function ForgotPassword() {
         <div className='forright'>
         <div className="forfrm">
           <h6>Forget password?</h6>
-          <form >
+          <form>
             <p><input   type="email"
                                  id="form3Example3c"
                                  name="email"
@@ -151,7 +75,8 @@ export default function ForgotPassword() {
                                : null}{" "}
                               </p>
             
-            <input type="submit" value="Reset Password" className='resetpassbtn'    onClick={() => {handleSubmit()}}/>
+          <input type="submit" value="Reset Password" className='resetpassbtn' onClick={(e)=>handleSubmit(e)}/>
+            {/* <button type="submit" className="resetpassbtn">Reset Password</button> */}
           </form>
 
 

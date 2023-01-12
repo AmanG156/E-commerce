@@ -1,7 +1,8 @@
-.logout_btn{
+.Product_logout_btn{
     background-color: orange;
     width: 105px;
     height: 39px;
+    margin-right: 48px;
 }
 .Profile_header{
     border: 2px ;
@@ -146,40 +147,33 @@
     text-align: center;
 
 }
-/* .popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-} */
-
-/* The actual popup */
-/* .popup .popuptext {
-  visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
-} */
-
-/* Popup arrow */
-/* .popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-} */
+.Product_Search_bar{
+    background-color: bisque;
+    width: 565px;
+  height: 45px;
+  margin-left: 80px;
+}
+.Product_header_icon{
+    margin-left: 40px;
+    margin-top: 6px;
+}
+@media screen and (max-width: 700px){
+    .row.Product_list .col {
+        width: 100% !important;
+    }
+    .card_Product{
+        width: auto;
+    }
+    .Product_body{
+        text-align: center;
+    }
+    .Product_logout_btn{
+        margin-top: 3px;
+    }
+    .Product_Search_bar{
+        margin-left: 0px;
+    }
+    .Product_header_icon{
+        margin-left: 0px !important;
+    }
+}

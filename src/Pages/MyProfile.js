@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import icon from "../images/icon.png";
 import profilepic from "../assests/profilepic.png";
 import "./MyProfile.css";
 import Header from "./Header";
@@ -12,8 +11,11 @@ import {
 import Footer from "./Footer";
 import axios from "axios";
 import {  Link } from "react-router-dom";
+// import { useGlobalContext } from "../context/use-context";
+
 export default function MyProfile() {
   const [showerror, setShowerror] = useState(false);
+  // const [address,setAddress]= useGlobalContext()
   const [image, setImage] = useState(profilepic);
   const [path, setPath] = useState("");
   const [data1, setData1] = useState({
@@ -163,7 +165,7 @@ export default function MyProfile() {
                     marginLeft: "186px",
                   }}
                 >
-                  <h3>{data1.email}</h3>
+                  <h3>{data1.fullName}</h3>
                   <p>{data1.email}</p>
                 </div>
               </div>
@@ -240,13 +242,15 @@ export default function MyProfile() {
                   : null}{" "}
               </p>
               <br />
-              {console.log("axfjsjfsjd",data1)}
+            
               <div className="inputicon">
                 <textarea
                   placeholder="Enter Your Address"
                   className="Confirm_Address"
                   name="address"
-                  value={data1.address}
+                  
+                  value={data1?.address[0]?.Address}
+
                   onChange={(event) => {
                     handleInput(event);
                   }}

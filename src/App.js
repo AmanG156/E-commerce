@@ -26,6 +26,7 @@ import ProductCatalogue from "./Pages/Vendor/ProductCatalogue/ProductCatalogue";
 // import VHeader from "./Pages/Vendor/VHeader/VHeader"
 import VHeadersidebar from "./Pages/Vendor/VHeadersidebar/VHeadersidebar";
 // import SideBar from "./Pages/Vendor/SideBar/SideBar";
+
 function App() {
   return (
     <div className="App">

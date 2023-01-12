@@ -20,19 +20,19 @@ const handleReset = () => {
 
 const handleSubmit = (event) => {
   event.preventDefault()
-  // console.log(otp);
+
   if (otp !== "") {
     if (otp) {
        let payload = {
         email:email,
      otp:Number(otp)}
        axios
-       .post("http://35.154.48.64:3500/api/verifyOtp", payload)
+       .post("https://ecom-five-pi.vercel.app/api/verify-account", payload)
        .then( (response)=>{
         console.log(response)
         if(response.data.msg === "otp verified"){
           navigate("/Pages/ResetPassword",{state:{"email":email}})
-          // alert("OTP Verified")
+          
         }
       else {
         alert("Invalid OTP")

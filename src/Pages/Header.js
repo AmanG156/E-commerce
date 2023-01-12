@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
 const { setCart, cart } = useGlobalContext();
-const [allProducts, setAllproducts] = useState([]);
-const [product, setProduct] = useState([]);
+const allProducts = useState([]);
+const setProduct = useState([]);
 const { login, setLogin, user } = useGlobalContext();
 // const [searchProduct, setSearchProduct] = useState('');
  
@@ -47,7 +47,9 @@ const Quantity_Number =()=>{
     <div>
               <nav className="navbar bg-light header">
         <div className="container-fluid">
-          <img src={icon} className="Header_img" style={{ marginLeft: "40px", marginTop: "6px" }} />
+          <Link to="/">
+          <img src={icon} alt="" className="Header_img" style={{ marginLeft: "40px", marginTop: "6px" }} />
+          </Link>
           <input
             type="search"
             placeholder="  Enter Your Product Name"
@@ -78,11 +80,11 @@ const Quantity_Number =()=>{
               </Link>
             </div>
           </div>
-          <div className="logouts_btn">
+          <div className="header_logouts_btn">
           <Link to="/Pages/Login">
             {user&&user.length > 0 ? (
               <button
-                className="logout_btn"
+                className="header_logout_btn"
                 onClick={() => {
                   logout();
                 }}
@@ -90,7 +92,7 @@ const Quantity_Number =()=>{
                 Logout
               </button>
             ) : (
-              <button className="logout_btn">LogIn</button>
+              <button className="header_logout_btn">LogIn</button>
             )}
           </Link>
           </div>

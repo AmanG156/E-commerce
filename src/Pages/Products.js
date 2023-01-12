@@ -6,10 +6,7 @@ import axios from "axios";
 import icon from "../assests/icon.png";
 import Footer from "./Footer";
 import "./Products.css";
-// import { Modal, ModalBody, Row, Col } from "reactstrap";
 import { AppContext, useGlobalContext } from "../context/use-context";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
 export default function Products() {
@@ -29,7 +26,7 @@ export default function Products() {
     setIsReadMore(!isReadMore);
   };
   // const [istoggle, setistoggle] =useState(false)
-  setTimeout(handleClose1, 3000)
+  setTimeout(handleClose1, 1000)
   useEffect(() => {
     let headers = {
       authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -54,8 +51,8 @@ export default function Products() {
       .get("http://35.154.48.64:3500/api/allProducts")
       .then((val) => {
         console.log(val);
-        setProduct(val.data);
-        setAllproducts(val.data);
+        setProduct(val.data.products);
+        setAllproducts(val.data.products);
       })
       .catch();
   }, [loading]);
@@ -98,11 +95,19 @@ export default function Products() {
       setProduct(data);
       setSelectCat(cat);
     } else {
+      
       let cat = selectCat.filter((v) => v !== e.target.value);
 
       let data = allProducts.filter((v) => cat.includes(v.category));
+      if(selectCat.length==0 || e.target.value== selectCat[0]){
+        console.log("check", selectCat);
+          setProduct(allProducts)
+      }else{
+
+      
       setProduct(data);
       setSelectCat(cat);
+      }
     }
   };
   const logout = () => {
@@ -123,14 +128,14 @@ export default function Products() {
     <div>
       <nav className="navbar bg-light header">
         <div className="container-fluid">
-          <img src={icon} style={{ marginLeft: "40px", marginTop: "6px" }} />
+          <img src={icon} className="Product_header_icon" style={{ marginLeft: "40px", marginTop: "6px" }} />
           <input
             type="search"
             placeholder="  Enter Your Product Name"
             onChange={(e) => {
               Search(e);
             }}
-            className="Searchbar"
+            className="Product_Search_bar"
           />
 
           <div className="headicons">
@@ -156,7 +161,7 @@ export default function Products() {
           <Link to="/Pages/Login">
             {user && user.email?.length > 0 ? (
               <button
-                className="logout_btn"
+                className="Product_logout_btn"
                 onClick={() => {
                   logout();
                 }}
@@ -164,7 +169,7 @@ export default function Products() {
                 Logout
               </button>
             ) : (
-              <button className="logout_btn">LogIn</button>
+              <button className="Product_logout_btn">Login</button>
             )}
           </Link>
         </div>
@@ -229,7 +234,7 @@ export default function Products() {
                           {isReadMore ? item.name.slice(0, 10) : item.name}
                           {item.name.length > 10 && (
                             <span onClick={toggleReadMore}>
-                              {isReadMore ? "...more" : " ...less"}
+                              {isReadMore ? "..." : " ..."}
                             </span>
                           )}
                         </h5>

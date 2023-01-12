@@ -2,15 +2,16 @@ import React from "react";
 import{Formik,Form} from 'formik';
 import TextField  from "./TextField";
 import * as Yup from 'yup';
+import axios from "axios";
+import {  useNavigate } from "react-router-dom";
+
 import "./VSignUp.css";
 // import { useState } from "react"
 export default function SignUp() {
+  // const navigate = useNavigate()
     const validate=Yup.object({
         fullName:Yup.string()
         .max(15,'Must be 15 character or less')
-        .required('required'),
-        address:Yup.string()
-        .max(50,'Must be 50 character or less')
         .required('required'),
         number:Yup.number()
         .max(10,'Must be 10 character')
@@ -22,21 +23,55 @@ export default function SignUp() {
         password:Yup.string()
         .min(6,'Password must be atleast 6 charachter')
         .required('Password is required'),
-    
+        Cpassword:Yup.string()
+        .min(6,'Password must be atleast 6 charachter')
+        .required('Password is required'),
       })
 // 
   return (
 <Formik
 initialValues={{
     firstName:'',
-    address:'',
     email:'',
     password:'',
+    Cpassword:"",
     number:''
 }}
 validationSchema={validate}
 onSubmit={values=>{
     console.log(values)
+    // const handleSubmit = () => {
+    //   console.log(values);
+    //   if (
+    //     values.fullName !== "" &&
+    //     values.email !== "" &&
+    //     values.password !== "" &&
+    //     values.contact !== "" &&
+    //     values.Cpassword !== ""
+    //   ) {
+    //     if ( values.password ===  values.Cpassword) {
+    //       alert("Form is Submitted");
+    //       let payload = {
+    //         name:  values.fullName,
+    //         email:  values.email,
+    //         mobile:  values.contact,
+    //         password:  values.password,
+    //         Cpassword:values.Cpassword
+    //       };
+    //       axios
+    //         .post("http://35.154.48.64:3500/api/signup", payload)
+    //         .then((val) => console.log(val),
+    //         navigate("/Pages/Login"))
+    //         .catch();
+  
+    //     } else {
+    //       alert("Password is not same");
+    //     }
+    //   } else {
+    //     alert("Invalid entry");
+       
+    //   }
+    // };    
 }}
 >
 {formik=>(
@@ -46,11 +81,11 @@ onSubmit={values=>{
 
     <Form>
         <TextField  placeholder="FullName" name="firstName" type="text" />
-        <TextField  placeholder="Address" name="address" type="text" />
+        <TextField  placeholder="Contact Number" name="Contact" type="number" />
+         <TextField  placeholder="Email" name="email" type="email" />
+         <TextField  placeholder="Password" name="password" type="password" />
+         <TextField  placeholder=" Confirm Password" name="Cpassword" type="password" />
 
-        <TextField  placeholder="Email" name="email" type="email" />
-        <TextField  placeholder="Contact Number" name="lastName" type="number" />
-        <TextField  placeholder="Password" name="password" type="password" />
          <button className="VSignUp_btn" type="submit">Register</button>
          {/* <button className="btn btn-danger mt-3" type="reset">Reset</button> */}
    </Form>

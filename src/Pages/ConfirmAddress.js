@@ -4,13 +4,16 @@ import Header from "./Header";
 import Footer from "./Footer";
 import "./ConfirmAddress.css";
 import { Modal, ModalBody, Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import axios from "axios";
 import { useGlobalContext } from "../context/use-context";
 import { FaTrash } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
+import StripeCheckout from 'react-stripe-checkout';
 
 export default function ConfirmAddress() {
+  const key="pk_test_51MJWlySJrdRwEYvIrdpWwR2sip7fa3h9RcGcuZaPzKvcvHVMKxcdni7zPpayxakPIavV0eiRrFMJz51EIJSYl0hA00kT1AY6YE"
+  const [stripeToken, setStripeToken] = useState(null);
   const [modal, setModal] = useState(false);
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState([]);
@@ -21,6 +24,8 @@ export default function ConfirmAddress() {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const { setCart, cart } = useGlobalContext();
+  const [index, setIndex] = useState(null)
+  const navigate = useNavigate()
   const [placeorder, setPlaceorder] = useState({
     address: "",
     ProductList: [],
@@ -197,7 +202,7 @@ export default function ConfirmAddress() {
       .then((res) => {
         console.log(res.data);
         setUserdata(res.data.result);
-        setAddresslist(res.data.result.address);
+        setAddresslist ((res.data.result.address));
       })
 
       .catch((err) => console.log(err));
@@ -305,35 +310,31 @@ export default function ConfirmAddress() {
     setPlaceorder(payload);
   };
 
-  // const handleCheckout = async (id, price) => {
-  //   let payload = {
-  //     subscriptionId: id,
-  //     name: userDetails.firstName,
-  //     email: userDetails.email,
-  //     price: price
-  //   }
-  //   const res = await axios.post("https://8f86-2401-4900-1a5c-9700-c9cc-b636-6442-39a5.in.ngrok.io/api/v2/transaction/subscriptionCheckout",
-  //     payload
-  //   );
-  //   console.log(res);
-  //   console.log(res.status)
-  //   console.log(res.data.session.id);
-  //   const status = res.status;
-  //   const sessionId = res.data.session.id;
-  //   console.log(status);
-    
-
-  //   /* global Stripe */
-  //   var stripe = Stripe("pk_test_51MJWlySJrdRwEYvIrdpWwR2sip7fa3h9RcGcuZaPzKvcvHVMKxcdni7zPpayxakPIavV0eiRrFMJz51EIJSYl0hA00kT1AY6YE");
-  //   if (status === 200) {
-  //     alert("Going to Checkout Page");
-  //     stripe.redirectToCheckout({ sessionId: sessionId });
-
-  //   } else {
-  //     alert("Failed");
-  //   }
-
-  // };
+  const onToken = (token) => {
+    setStripeToken(token)
+    console.log(token)
+  }
+  useEffect(() => {
+    const makeRequest = async()=>{
+      try {
+        let res = await axios.post("http://35.154.48.64:3500/api/payment",{
+          amount:total*100,
+          token:stripeToken
+        })
+        console.log(res.data)
+      if(res.status<400){
+     navigate("/Pages/Success")
+      }
+      else{
+        throw "Payment Failed"
+      }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    makeRequest()
+  }, [stripeToken])
+  
   return (
     <div>
       <div className="Header">
@@ -348,7 +349,7 @@ export default function ConfirmAddress() {
               <div key={i} className="Address_div">
                 <input
                   type="radio"
-                  onClick={() => selectAddress(i)}
+                  onClick={(i) => selectAddress(i)}
                   defaultChecked={i === 0 ? true : false}
                   name="check"
                   className="check_btn"
@@ -435,7 +436,7 @@ export default function ConfirmAddress() {
                         ))}
                       </select>
                     </div>
-                  </Col>
+                  </Col>s
                 </Row>
                 <Row>
                   <Col lg={6}>
@@ -479,13 +480,22 @@ export default function ConfirmAddress() {
                   </Col>
                 </Row>
                 <Row>
-                  <Col lg={12}>
+                  <Col lg={2}>
                     <button
                       className="save_btn"
                       type="submit"
                       onClick={(e) => handleSubmit(e)}
                     >
                       Save
+                    </button>
+                  </Col>
+                  <Col lg={10}>
+                    <button
+                      className="cancle_btn"
+                      type="button"
+                      onClick={(e) =>setModal(false)}
+                    >
+                      Cancle
                     </button>
                   </Col>
                 </Row>
@@ -598,16 +608,26 @@ export default function ConfirmAddress() {
                   </Col>
                 </Row>
                 <Row>
-                  <Col lg={12}>
+                  <Col lg={2}>
                     <button
                       className="save_btn"
                       type="submit"
                       onClick={(e) => handleEditSubmit(e)}
                     >
-                      Save
+                      Saved
+                    </button>
+                  </Col>
+                  <Col lg={10}>
+                    <button
+                      className="cancle_btn"
+                      type="button"
+                      onClick={(e) => setEdit(false)}
+                    >
+                    Cancle
                     </button>
                   </Col>
                 </Row>
+           
               </form>
             </ModalBody>
           </Modal>
@@ -622,7 +642,7 @@ export default function ConfirmAddress() {
         <div className="col-md-3 Placeorder_div">
           <div
             className="card Confirm_card"
-            style={{ width: "18rem", height: "260px" , marginRight:"97px" }}
+            style={{ marginRight:"97px" }}
           >
             <div className="card-body confirm_cart_summary">
               <ul>
@@ -632,25 +652,39 @@ export default function ConfirmAddress() {
                 <p className="card-text">
                   <li>
                     <span>item Cost : </span>
-                    <span>{total}</span>
+                    <span>  {total.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })} </span>
                   </li>
                   
                   <li>
                     <span>Order total : </span>
-                    <span>{total}</span>
+                    <span>  {total.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })} </span>
                   </li>
                   <li>
                     <span> Cart Subtotal : </span>
-                    <span>{total}</span>
+                    <span>  {total.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })} </span>
                   </li>
                   <br />
                 </p>
                 <div>
-                  <Link to="/Pages/ConfirmAddress">
+                <StripeCheckout name="Ecom Shop" billingAddress shippingAddress description={`Total ${total}`} amount={total*100} token={onToken} stripeKey={key} currency="inr">
+                <div>
                     <button className="placeorder_btn btn btn-warning" >
                       Place Order
                     </button>
-                  </Link>
+                </div>
+                </StripeCheckout> 
                 </div>
               </ul>
             </div>

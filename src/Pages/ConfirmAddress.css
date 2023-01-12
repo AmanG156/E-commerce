@@ -46,6 +46,12 @@
     background-color: orange;
     margin-top: 27px;
 }
+.cancle_btn{
+    width: 107px;
+    height: 37px;
+    margin-top: 27px;
+    background-color:#e7e7e7;
+}
 .address_removebtn{
     text-align: initial;
 }
@@ -162,9 +168,18 @@ width: 80%;
         margin-left: -88px;
         margin-top: 0;
     }
-    .address_div{
-        margin-left: -88px;
-        margin-top: 0;
-
+    .Address_div{
+        margin-left: 9px;
+        width: 100%;
+        }
+    .Add_btn{
+        margin-left: 9px;
+        width: 100%;
+    }
+    .Confirm_card{
+        margin-right: 144px;
+    }
+    .cart_item{
+        margin-left: 15px;
     }
 }
