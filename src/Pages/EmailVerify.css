@@ -1,0 +1,28 @@
+.otp_field{
+    margin-right: 275px;
+    margin-top: 141px;
+}
+.otp_heading{
+    margin-right: 208px;
+    margin-bottom: revert;
+}
+.otp_input{
+    border-top: none;
+    border-left:none;
+    border-right: none;
+    width: 272px;
+    font-size: 36px;
+}
+.otp_btn{
+    margin-top: 53px;
+    margin-right: 113px;
+    width: 158px;
+    height: 41px;
+    background-color: orange;
+}
+@media screen  and (max-width:767px){
+    .otp_field{
+        margin-right: 0px;
+        margin-top: 50px;
+    }
+}

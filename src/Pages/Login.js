@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import Logins from "../assests/Login.png";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelopeOpen, FaLock } from "react-icons/fa";
-
+import Cookies from "js-cookie";
 export default function Login() {
   const [showerror, setShowerror] = useState(false);
   const [pwdmsg, setPwdmsg] = useState("");
   const navigate = useNavigate();
   const [data1, setData1] = useState({
-    email: "",
+    email: "", 
     password: "",
+    
   });
+  const [checked,setChecked]= useState(false)
+  const [login , setLogin]=useState(false)
   const handleInput = (event) => {
     if (event.target.name === "password") {
       if (event.target.name === "password" && event.target.value === "") {
@@ -37,6 +40,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e)
     console.log(data1);
     if (data1.email !== "" && data1.password !== "") {
       if (data1) {
@@ -44,12 +48,19 @@ export default function Login() {
           email: data1.email,
           password: data1.password,
         };
+        if(checked){
+          Cookies.set("credentials",JSON.stringify(payload))
+        }
+
+        // let cred = Cookies.get("credentials")
+        // console.log(JSON.parse(cred))
         axios
           .post("https://ecom-five-pi.vercel.app/api/login", payload)
           .then((val) => {
-            if (val.data.token) {
-              localStorage.setItem("token", val.data.token);
-              localStorage.setItem("refresh", val.data.refresh);
+            if (val.data.status===200) {
+              Cookies.set("login", true);
+              var log= Cookies.get("login");
+              setLogin(log)
               alert("Form is Submitted");
               navigate("/");
             } else {
@@ -63,9 +74,25 @@ export default function Login() {
       }
     }
   };
+useEffect(() => {
+  
+ let creds= Cookies.get("credentials")
+ console.log(creds);
+ if(typeof creds!=="undefined"){
+  creds = JSON.parse(creds)
+  setData1({
+   email:creds.email,
+   password:creds.password
+  })
+ }
+
+},[])
 
   return (
+  
     <div>
+      {/* {console.log(data1.email,data1.password)} */}
+
       <section>
         <div className="container h-100 ">
           <div className="row d-flex justify-content-center align-items-center h-100 ">
@@ -98,6 +125,7 @@ export default function Login() {
                                   name="email"
                                   className="form-control inputLogin_field"
                                   placeholder="Email"
+                                  value={data1.email}
                                   onChange={(event) => {
                                     handleInput(event);
                                   }}
@@ -118,6 +146,7 @@ export default function Login() {
                                   id="form3Example4cd"
                                   className="form-control inputLogin_field"
                                   name="password"
+                                  value={data1.password}
                                   placeholder="Password"
                                   onChange={(event) => {
                                     handleInput(event);
@@ -137,10 +166,16 @@ export default function Login() {
                               <input
                                 className="form-check-input box boxes "
                                 type="checkbox"
-                                value=""
+                            
+                            checked={checked} 
+                                name= "check"
+                                onChange={() => {
+                                  setChecked(!checked);
+                                }}
+                          
                                 id="form2Example3"
                                 style={{
-                                  marginLeft: "-11px",
+                                  marginLeft: "-11px", 
                                   marginTop: "35px",
                                 }}
                               />
@@ -148,6 +183,7 @@ export default function Login() {
                                 className="form-check-label remember"
                                 style={{ marginTop: "30px" }}
                                 for="form2Example3"
+                        
                               >
                                 Remember me
                               </label>

@@ -4,15 +4,16 @@ import Header from "./Header";
 import Footer from "./Footer";
 import "./ConfirmAddress.css";
 import { Modal, ModalBody, Row, Col } from "reactstrap";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useGlobalContext } from "../context/use-context";
 import { FaTrash } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
-import StripeCheckout from 'react-stripe-checkout';
+import StripeCheckout from "react-stripe-checkout";
 
 export default function ConfirmAddress() {
-  const key="pk_test_51MJWlySJrdRwEYvIrdpWwR2sip7fa3h9RcGcuZaPzKvcvHVMKxcdni7zPpayxakPIavV0eiRrFMJz51EIJSYl0hA00kT1AY6YE"
+  const key =
+    "pk_test_51MJWlySJrdRwEYvIrdpWwR2sip7fa3h9RcGcuZaPzKvcvHVMKxcdni7zPpayxakPIavV0eiRrFMJz51EIJSYl0hA00kT1AY6YE";
   const [stripeToken, setStripeToken] = useState(null);
   const [modal, setModal] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -24,8 +25,8 @@ export default function ConfirmAddress() {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const { setCart, cart } = useGlobalContext();
-  const [index, setIndex] = useState(null)
-  const navigate = useNavigate()
+  const [index, setIndex] = useState(null);
+  const navigate = useNavigate();
   const [placeorder, setPlaceorder] = useState({
     address: "",
     ProductList: [],
@@ -202,7 +203,7 @@ export default function ConfirmAddress() {
       .then((res) => {
         console.log(res.data);
         setUserdata(res.data.result);
-        setAddresslist ((res.data.result.address));
+        setAddresslist(res.data.result.address);
       })
 
       .catch((err) => console.log(err));
@@ -269,10 +270,10 @@ export default function ConfirmAddress() {
       .then()
       .catch();
   };
- 
+
   const deleteAddress = (e, i) => {
     let arr = [...addresslist];
- 
+
     console.log(arr);
     const removedArr = [...addresslist].filter((todo, ind) => ind !== i);
     setAddresslist(removedArr);
@@ -311,30 +312,29 @@ export default function ConfirmAddress() {
   };
 
   const onToken = (token) => {
-    setStripeToken(token)
-    console.log(token)
-  }
+    setStripeToken(token);
+    console.log(token);
+  };
   useEffect(() => {
-    const makeRequest = async()=>{
-      try {
-        let res = await axios.post("http://35.154.48.64:3500/api/payment",{
-          amount:total*100,
-          token:stripeToken
-        })
-        console.log(res.data)
-      if(res.status<400){
-     navigate("/Pages/Success")
-      }
-      else{
-        throw "Payment Failed"
-      }
+    const makeRequest = async () => {
+      try {x
+        let res = await axios.post("http://35.154.48.64:3500/api/payment", {
+          amount: total * 100,
+          token: stripeToken,
+        });
+        console.log(res.data);
+        if (res.status < 400) {
+          navigate("/Pages/Success");
+        } else {
+          throw "Payment Failed";
+        }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    makeRequest()
-  }, [stripeToken])
-  
+    };
+    makeRequest();
+  }, [stripeToken]);
+
   return (
     <div>
       <div className="Header">
@@ -436,7 +436,8 @@ export default function ConfirmAddress() {
                         ))}
                       </select>
                     </div>
-                  </Col>s
+                  </Col>
+                  s
                 </Row>
                 <Row>
                   <Col lg={6}>
@@ -493,7 +494,7 @@ export default function ConfirmAddress() {
                     <button
                       className="cancle_btn"
                       type="button"
-                      onClick={(e) =>setModal(false)}
+                      onClick={(e) => setModal(false)}
                     >
                       Cancle
                     </button>
@@ -623,27 +624,21 @@ export default function ConfirmAddress() {
                       type="button"
                       onClick={(e) => setEdit(false)}
                     >
-                    Cancle
+                      Cancle
                     </button>
                   </Col>
                 </Row>
-           
               </form>
             </ModalBody>
           </Modal>
           <div>
-    
             <h3 className="Add_btn" onClick={() => setModal(true)}>
               Add New Address
             </h3>
-      
           </div>
         </div>
         <div className="col-md-3 Placeorder_div">
-          <div
-            className="card Confirm_card"
-            style={{ marginRight:"97px" }}
-          >
+          <div className="card Confirm_card" style={{ marginRight: "97px" }}>
             <div className="card-body confirm_cart_summary">
               <ul>
                 <li className="summary_title">
@@ -652,39 +647,57 @@ export default function ConfirmAddress() {
                 <p className="card-text">
                   <li>
                     <span>item Cost : </span>
-                    <span>  {total.toLocaleString("en-IN", {
+                    <span>
+                      {" "}
+                      {total.toLocaleString("en-IN", {
                         maximumFractionDigits: 2,
                         style: "currency",
                         currency: "INR",
-                      })} </span>
+                      })}{" "}
+                    </span>
                   </li>
-                  
+
                   <li>
                     <span>Order total : </span>
-                    <span>  {total.toLocaleString("en-IN", {
+                    <span>
+                      {" "}
+                      {total.toLocaleString("en-IN", {
                         maximumFractionDigits: 2,
                         style: "currency",
                         currency: "INR",
-                      })} </span>
+                      })}{" "}
+                    </span>
                   </li>
                   <li>
                     <span> Cart Subtotal : </span>
-                    <span>  {total.toLocaleString("en-IN", {
+                    <span>
+                      {" "}
+                      {total.toLocaleString("en-IN", {
                         maximumFractionDigits: 2,
                         style: "currency",
                         currency: "INR",
-                      })} </span>
+                      })}{" "}
+                    </span>
                   </li>
                   <br />
                 </p>
                 <div>
-                <StripeCheckout name="Ecom Shop" billingAddress shippingAddress description={`Total ${total}`} amount={total*100} token={onToken} stripeKey={key} currency="inr">
-                <div>
-                    <button className="placeorder_btn btn btn-warning" >
-                      Place Order
-                    </button>
-                </div>
-                </StripeCheckout> 
+                  <StripeCheckout
+                    name="Ecom Shop"
+                    billingAddress
+                    shippingAddress
+                    description={`Total ${total}`}
+                    amount={total * 100}
+                    token={onToken}
+                    stripeKey={key}
+                    currency="inr"
+                  >
+                    <div>
+                      <button className="placeorder_btn btn btn-warning">
+                        Place Order
+                      </button>
+                    </div>
+                  </StripeCheckout>
                 </div>
               </ul>
             </div>
@@ -709,9 +722,7 @@ export default function ConfirmAddress() {
                 />
                 <div className="productinfo">
                   <p>{item.name}</p>
-                  <h6 style={{ color: "red" }}>
-                    Selling Fast!
-                  </h6>
+                  <h6 style={{ color: "red" }}>Selling Fast!</h6>
                   <h5>Quantity</h5>
                   <div className=" col add-minus-quantity">
                     <input
@@ -723,26 +734,26 @@ export default function ConfirmAddress() {
                   </div>
                 </div>
                 <div className="address_removebtn">
-                <h1
-                  onClick={() => {
-                    remove(item);
-                  }}
-                  style={{
-                    fontSize: "20px",
-                    marginTop: "22px",
-                    cursor: "pointer",
-                    textAlign:"right"
-                  }}
-                >
-                  Remove
-                </h1>
-                <h5 className="cart_price">
-                  {item.price.toLocaleString("en-IN", {
-                    maximumFractionDigits: 2,
-                    style: "currency",
-                    currency: "INR",
-                  })}
-                </h5>
+                  <h1
+                    onClick={() => {
+                      remove(item);
+                    }}
+                    style={{
+                      fontSize: "20px",
+                      marginTop: "22px",
+                      cursor: "pointer",
+                      textAlign: "right",
+                    }}
+                  >
+                    Remove
+                  </h1>
+                  <h5 className="cart_price">
+                    {item.price.toLocaleString("en-IN", {
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                  </h5>
                 </div>
               </div>
             );

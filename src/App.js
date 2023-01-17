@@ -12,6 +12,7 @@ import Products from "./Pages/Products";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Otp from "./Pages/Otp";
+import EmailVerify from "./Pages/EmailVerify";
 import Forgot from "./Pages/ForgetPassword";
 import ResetPassword from "./Pages/ResetPassword";
 import ProductDetails from "./Pages/ProductDetails";
@@ -53,6 +54,7 @@ function App() {
         <Route path="/Pages/OrdersHistory" element={<OrdersHistory />} />
         <Route path="/Pages/Cart" element={<Cart />} />
         <Route path="/Pages/Otp" element={<Otp />} />
+        <Route path="/Pages/EmailVerify" element={<EmailVerify/>}/>
         <Route path="/Pages/ProductDetails/:id/:category" element={<ProductDetails />} />
         {/* <Route path="/Pages/Vendor/SideBar/SideBar" element={<SideBar/>}/> */}
       </Routes>

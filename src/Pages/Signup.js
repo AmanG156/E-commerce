@@ -43,14 +43,14 @@ export default function Signup() {
         let payload = {
           name: data1.fullName,
           email: data1.email,
-          mobile: data1.contact,
+          mobile: Number(data1.contact),
           password: data1.password,
         };
         axios
           .post("https://ecom-five-pi.vercel.app/api/register", payload)
           .then((val) => console.log(val),
           navigate("/Pages/Login"))
-          .catch();
+          .catch(err => console.log(err));
 
         handleReset();
       } else {
