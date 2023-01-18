@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import "./Products.css";
 import { AppContext, useGlobalContext } from "../context/use-context";
 import Modal from "react-bootstrap/Modal";
+import Cookies from "js-cookie";
 
 export default function Products() {
   const [product, setProduct] = useState([]);
@@ -41,10 +42,10 @@ export default function Products() {
         setCart(val.data);
       });
     axios
-      .get("http://35.154.48.64:3500/api/allCategory")
+      .get("https://ecom-five-pi.vercel.app/api/categories")
       .then((val) => {
         console.log(val);
-        setCategory(val.data);
+        setCategory(val.data.categories);
       })
       .catch();
     axios
@@ -124,6 +125,17 @@ export default function Products() {
     console.log(lowerCase);
   };
  
+  // const handlelogout =()=>{
+  //   axios
+  //   .get("https://ecom-five-pi.vercel.app/api/logout").then(res => {
+  //      if(res.data.status < 400){
+  //        let remb= Cookies.remove("crendentials")
+  //        let clear= Cookies.remove("logout")
+  //      }
+  //   }).catch(err => {
+  //   console.log(err);
+  //   })
+  // }
   return (
     <div>
       <nav className="navbar bg-light header">
@@ -159,18 +171,13 @@ export default function Products() {
             </div>
           </div>
           <Link to="/Pages/Login">
-            {user && user.email?.length > 0 ? (
+           
               <button
                 className="Product_logout_btn"
-                onClick={() => {
-                  logout();
-                }}
+              //  onClick={handlelogout}
               >
                 Logout
               </button>
-            ) : (
-              <button className="Product_logout_btn">Login</button>
-            )}
           </Link>
         </div>
       </nav>
@@ -188,10 +195,10 @@ export default function Products() {
                   <>
                     <input
                       type="checkbox"
-                      value={v.category}
+                      value={v.name}
                       onClick={(e) => filterCategory(e)}
                     />
-                    <label>{v.category}</label>
+                    <label>{v.name}</label>
                     <br />
                   </>
                 ))}

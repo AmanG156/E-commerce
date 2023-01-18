@@ -26,12 +26,16 @@ import Reports from "./Pages/Vendor/Reports/Reports";
 import ProductCatalogue from "./Pages/Vendor/ProductCatalogue/ProductCatalogue";
 // import VHeader from "./Pages/Vendor/VHeader/VHeader"
 import VHeadersidebar from "./Pages/Vendor/VHeadersidebar/VHeadersidebar";
+import PrivateRoute from "./Utils/PrivateRoute";
 // import SideBar from "./Pages/Vendor/SideBar/SideBar";
 
 function App() {
   return (
     <div className="App">
       <Routes>
+        <Route  element={<PrivateRoute/>}>
+      
+        </Route>
         <Route exact path="/" element={<Products />} />
         <Route path="/Pages/Signup" element={<Signup/>} />
         <Route path="/Pages/Footer" element={<Footer/>} />
@@ -48,11 +52,7 @@ function App() {
         <Route path="/Pages/Forgot" element={<Forgot />} />
         <Route path="/Pages/Header" element={<Header/>}/> 
         <Route path="/Pages/ResetPassword" element={<ResetPassword />} />
-        <Route path="/Pages/MyProfile" element={<MyProfile />} />
-        <Route path="/Pages/MyOrder" element={<MyOrder />} />
-        <Route path="/Pages/ConfirmAddress" element={<ConfirmAddress/>}/>
-        <Route path="/Pages/OrdersHistory" element={<OrdersHistory />} />
-        <Route path="/Pages/Cart" element={<Cart />} />
+       
         <Route path="/Pages/Otp" element={<Otp />} />
         <Route path="/Pages/EmailVerify" element={<EmailVerify/>}/>
         <Route path="/Pages/ProductDetails/:id/:category" element={<ProductDetails />} />

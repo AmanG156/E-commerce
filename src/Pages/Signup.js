@@ -49,7 +49,7 @@ export default function Signup() {
         axios
           .post("https://ecom-five-pi.vercel.app/api/register", payload)
           .then((val) => console.log(val),
-          navigate("/Pages/Login"))
+          navigate("/Pages/EmailVerify",{state:{"email":data1.email}}))
           .catch(err => console.log(err));
 
         handleReset();

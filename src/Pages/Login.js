@@ -55,13 +55,16 @@ export default function Login() {
         // let cred = Cookies.get("credentials")
         // console.log(JSON.parse(cred))
         axios
-          .post("https://ecom-five-pi.vercel.app/api/login", payload)
+          .post("https://ecom-five-pi.vercel.app/api/login", payload,{
+            withCredentials:true
+          })
           .then((val) => {
+            console.log()
             if (val.data.status===200) {
               Cookies.set("login", true);
               var log= Cookies.get("login");
               setLogin(log)
-              alert("Form is Submitted");
+              // alert("Form is Submitted");
               navigate("/");
             } else {
               alert("User Does't exist");
@@ -175,12 +178,12 @@ useEffect(() => {
                           
                                 id="form2Example3"
                                 style={{
-                                  marginLeft: "-11px", 
+                                  // marginLeft: "-11px", 
                                   marginTop: "35px",
                                 }}
                               />
                               <label
-                                className="form-check-label remember"
+                                className="form-check-label Login_remember"
                                 style={{ marginTop: "30px" }}
                                 for="form2Example3"
                         
@@ -188,7 +191,7 @@ useEffect(() => {
                                 Remember me
                               </label>
                               <div
-                                className="forgot_pwd"
+                                className="Login_forgot_pwd"
                                 style={{
                                   marginLeft: "219px",
                                   marginTop: "-27px",
@@ -197,10 +200,12 @@ useEffect(() => {
                                 <Link to="/Pages/Forgot">
                                   {" "}
                                   <div
-                                    className="text-body "
+                                    className="text-body Login_forgot "
                                     style={{
                                       marginLeft: "20px",
                                       marginTop: "4px",
+                                  textDecoration:"none"
+
                                     }}
                                   >
                                     {" "}

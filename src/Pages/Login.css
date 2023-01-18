@@ -21,10 +21,10 @@
     margin-left: -206px !important;
     width: 133px !important;
 }
-/* .remember{
-    margin-right: 237px;
-    margin-top: 23px;
-} */
+.Login_remember{
+    margin-right: 250px;
+    /* margin-top: 23px; */
+}
 .Login_parent{
     position: relative;
 }
@@ -49,6 +49,10 @@
 }
 .Login_container{
     width: 100%;
+}
+
+.Login_forgot_pwd a{
+    text-decoration: none;
 }
 .Have_an{
  
