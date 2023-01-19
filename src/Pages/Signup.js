@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./Signup.css";
 import signup from "../assests/Signup.png";
 import axios from "axios";
-import { FaUser, FaEnvelopeOpen, FaPhoneVolume ,FaLock} from "react-icons/fa";
-import {  useNavigate } from "react-router-dom";
+import { FaUser, FaEnvelopeOpen, FaPhoneVolume, FaLock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [showerror, setShowerror] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [data1, setData1] = useState({
     fullName: "",
     email: "",
@@ -48,9 +48,11 @@ export default function Signup() {
         };
         axios
           .post("https://ecom-five-pi.vercel.app/api/register", payload)
-          .then((val) => console.log(val),
-          navigate("/Pages/EmailVerify",{state:{"email":data1.email}}))
-          .catch(err => console.log(err));
+          .then(
+            (val) => console.log(val),
+            navigate("/Pages/EmailVerify", { state: { email: data1.email } })
+          )
+          .catch((err) => console.log(err));
 
         handleReset();
       } else {
@@ -84,9 +86,7 @@ export default function Signup() {
                         </div>
                       </div>
                       <div className="col-md-6 col-lg-6 ">
-                        <h1 className="signup_header">
-                          Sign up
-                        </h1>
+                        <h1 className="signup_header">Sign up</h1>
 
                         <form className="mx-1 mx-md-4 singupform">
                           <div className="d-flex flex-row align-items-center mb-4">
@@ -103,7 +103,10 @@ export default function Signup() {
                                   handleInput(event);
                                 }}
                               />
-                              <div className="signupIcon"> <FaUser /> </div>
+                              <div className="signupIcon">
+                                {" "}
+                                <FaUser />{" "}
+                              </div>
 
                               <p style={{ color: "red" }}>
                                 {showerror && data1.fullName === ""
@@ -127,7 +130,9 @@ export default function Signup() {
                                   handleInput(event);
                                 }}
                               />
-                             <div className="signupIcon"><FaEnvelopeOpen/></div>
+                              <div className="signupIcon">
+                                <FaEnvelopeOpen />
+                              </div>
 
                               <p style={{ color: "red" }}>
                                 {showerror && data1.email === ""
@@ -151,7 +156,9 @@ export default function Signup() {
                                   handleInput(event);
                                 }}
                               />
-                                  <div className="signupIcon"><FaPhoneVolume /></div>
+                              <div className="signupIcon">
+                                <FaPhoneVolume />
+                              </div>
                               <p style={{ color: "red" }}>
                                 {showerror && data1.contact === ""
                                   ? "Please fill valid entry"
@@ -174,7 +181,9 @@ export default function Signup() {
                                   handleInput(event);
                                 }}
                               />
-                               <div className="signupIcon">< FaLock/></div>
+                              <div className="signupIcon">
+                                <FaLock />
+                              </div>
                               <p style={{ color: "red" }}>
                                 {showerror && data1.password === ""
                                   ? "Please fill valid entry"
@@ -196,8 +205,10 @@ export default function Signup() {
                                   handleInput(event);
                                 }}
                               />
-                               <div className="signupIcon">< FaLock/></div>
-                               <p style={{ color: "red" }}>
+                              <div className="signupIcon">
+                                <FaLock />
+                              </div>
+                              <p style={{ color: "red" }}>
                                 {showerror && data1.Cpassword === ""
                                   ? "Please fill valid entry"
                                   : null}{" "}

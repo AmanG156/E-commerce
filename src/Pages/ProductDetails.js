@@ -22,9 +22,9 @@ export default function PaymentDetails() {
   };
   let { id, category } = useParams();
   useEffect(() => {
-    let payload = { id: id, category: category };
+    let payload = { id: id };
     axios
-      .post("http://35.154.48.64:3500/api/getProductDetails", payload)
+      .post("https://ecom-five-pi.vercel.app/api/product", payload)
       .then(function (response) {
         console.log(response);
         setProduct(response.data[0]);
@@ -111,7 +111,7 @@ export default function PaymentDetails() {
                 })
               : 0}{" "}
           </h5>
-          <h6 className="details">{product.details} </h6>
+          <h6 className="details">{product.desc} </h6>
           <button
             className="add_btn"
             onClick={() => {

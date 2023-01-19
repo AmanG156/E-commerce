@@ -9,6 +9,7 @@ import "./Products.css";
 import { AppContext, useGlobalContext } from "../context/use-context";
 import Modal from "react-bootstrap/Modal";
 import Cookies from "js-cookie";
+import { Key } from "react-bootstrap-icons";
 
 export default function Products() {
   const [product, setProduct] = useState([]);
@@ -34,7 +35,7 @@ export default function Products() {
     };
     axios
       .post(
-        "http://35.154.48.64:3500/api/getCartitems",
+        "",
         {},
         { headers: headers }
       )
@@ -49,7 +50,7 @@ export default function Products() {
       })
       .catch();
     axios
-      .get("http://35.154.48.64:3500/api/allProducts")
+      .get("https://ecom-five-pi.vercel.app/api/products")
       .then((val) => {
         console.log(val);
         setProduct(val.data.products);
@@ -76,7 +77,7 @@ export default function Products() {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
     axios
-      .post("http://35.154.48.64:3500/api/addToCart", payload, {
+      .post("", payload, {
         headers: headers,
       })
       .then(function (response) {
@@ -125,17 +126,22 @@ export default function Products() {
     console.log(lowerCase);
   };
  
-  // const handlelogout =()=>{
-  //   axios
-  //   .get("https://ecom-five-pi.vercel.app/api/logout").then(res => {
-  //      if(res.data.status < 400){
-  //        let remb= Cookies.remove("crendentials")
-  //        let clear= Cookies.remove("logout")
-  //      }
-  //   }).catch(err => {
-  //   console.log(err);
-  //   })
-  // }
+  const handlelogout =()=>{
+    axios
+    .get("https://ecom-five-pi.vercel.app/api/logout",{withCredentials:true}).then(res => {
+       if(res.data.status < 400){
+        console.log(res.data);
+         let remb= Cookies.remove("crendentials")
+         let clear= Cookies.remove("logout")
+       }
+    }).catch(err => {
+    console.log(err);
+    })
+  }
+  const imgConvert=(img)=>{
+   let converted= img?.toString("base64")
+   return converted
+  }
   return (
     <div>
       <nav className="navbar bg-light header">
@@ -174,7 +180,7 @@ export default function Products() {
            
               <button
                 className="Product_logout_btn"
-              //  onClick={handlelogout}
+               onClick={handlelogout}
               >
                 Logout
               </button>
@@ -191,16 +197,17 @@ export default function Products() {
                 <input type="checkbox" onClick={()=>setProduct(allProducts)}/>
                 <label>All Deals</label>
                 <br />
-                {category.map((v) => (
-                  <>
-                    <input
+                {category.map((v,i) => (
+                  <div key={i}>
+                    <input 
                       type="checkbox"
                       value={v.name}
                       onClick={(e) => filterCategory(e)}
                     />
+                
                     <label>{v.name}</label>
                     <br />
-                  </>
+                  </div>
                 ))}
               </div>
               <div style={{ border: "0.5px solid #ccc" }}></div>
@@ -228,13 +235,17 @@ export default function Products() {
             <div className="Card-headers">Products</div>
             <div className="row Product_list">
               {product.map((item, index) => {
+                const base64String = String.fromCharCode(...new Uint8Array(item?.poster?.file?.data))
                 return (
                   <div key={index} className="col">
                     <div className="card_Product ">
+                      {}
+
                       <img
-                        src={`https://ecommercewebap.herokuapp.com/${item.image}`}
+                        src={`data:image/png;base64,${base64String}`}
                         className="Product_img"
                       />
+                   
                       <div className="Product_body">
                         <h5 className="card-title">
                           {" "}
