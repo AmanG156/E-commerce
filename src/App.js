@@ -52,7 +52,7 @@ function App() {
         <Route path="/Pages/Forgot" element={<Forgot />} />
         <Route path="/Pages/Header" element={<Header/>}/> 
         <Route path="/Pages/ResetPassword" element={<ResetPassword />} />
-       
+        <Route path="/Pages/Cart" element={<Cart/>}/>
         <Route path="/Pages/Otp" element={<Otp />} />
         <Route path="/Pages/EmailVerify" element={<EmailVerify/>}/>
         <Route path="/Pages/ProductDetails/:id/:category" element={<ProductDetails />} />

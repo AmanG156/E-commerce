@@ -68,8 +68,9 @@ export default function Products() {
   };
   const add = (item) => {
     setCart((cart) => [...cart, item]);
+    console.log("cart",cart)
     let payload = {
-      productId: item._id,
+      product_id: item._id,
       quantity: 1,
       price: item.price,
     };
@@ -77,14 +78,14 @@ export default function Products() {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
     axios
-      .post("", payload, {
+      .post("https://ecom-five-pi.vercel.app/api/add-to-cart", payload, {
         headers: headers,
       })
       .then(function (response) {
         console.log(response);
       })
       .catch(function (error) {
-        console.log(error);
+        console.log("new",error);
       });
     setLoading(!loading);
   };
@@ -167,6 +168,7 @@ export default function Products() {
               <Link to="/Pages/Cart">
                 {" "}
                 <div className="amount-container">
+                  
                   <p className="total-amount">{cart.length}</p>
                 </div>
               </Link>

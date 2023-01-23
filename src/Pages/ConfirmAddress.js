@@ -55,7 +55,7 @@ export default function ConfirmAddress() {
     };
     axios
       .post(
-        "http://35.154.48.64:3500/api/getCartitems",
+        "https://ecom-five-pi.vercel.app/api/cart",
         {},
         { headers: headers }
       )

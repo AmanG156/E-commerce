@@ -24,7 +24,7 @@ export default function PaymentDetails() {
   useEffect(() => {
     let payload = { id: id };
     axios
-      .post("https://ecom-five-pi.vercel.app/api/product", payload)
+      .post("", payload)
       .then(function (response) {
         console.log(response);
         setProduct(response.data[0]);
@@ -41,17 +41,18 @@ export default function PaymentDetails() {
   const add = (item) => {
     setCart((cart) => [...cart, item]);
     let payload = {
-      productId: item._id,
+      product_id: item._id,
       quantity: 1,
       price: item.price,
     };
     let headers = {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
+    // {
+    //   headers: headers,
+    // }
     axios
-      .post("http://35.154.48.64:3500/api/addToCart", payload, {
-        headers: headers,
-      })
+      .post("https://ecom-five-pi.vercel.app/api/add-to-cart", payload)
       .then(function (response) {
         console.log(response);
       })

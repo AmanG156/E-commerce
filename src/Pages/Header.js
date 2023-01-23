@@ -71,7 +71,7 @@ const Quantity_Number =()=>{
 
                   {" "}
                   <div className="amount-container">
-                    <p className="total-amount">{Quantity_Number()}</p>
+                    <p className="total-amount">{cart.length}</p>
                   </div>
                 </Link>
                 <Link to="/Pages/Cart">

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import Footer from "./Footer";
@@ -11,29 +12,30 @@ export default function Cart() {
   const [loading, setLoading] = useState(false);
   const { setCart, cart } = useGlobalContext();
   const [total, setTotal] = useState(0);
-  console.log(cart);
+  console.log(cart,"Cart");
   useEffect(() => {
     let headers = {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     };
     axios
-      .post(
-        "http://35.154.48.64:3500/api/getCartitems",
+      .get(
+        "https://ecom-five-pi.vercel.app/api/cart",
         {},
         { headers: headers }
       )
       .then((val) => {
         console.log("val", val);
         let t = 0;
-        val.data.forEach((v) => {
+        val.data.cart.forEach((v) => {
           console.log("price", v.price);
           t += Number(v.price);
-          v.maxQuantity = v.quantity;
+          console.log(t)
+          v.quantity = v.quantity;
           v.quantity = 1;
         });
         setTotal(t);
         console.log(val);
-        setCart(val.data);
+        setCart(val.data.cart);
       })
       .catch();
   },[]);
@@ -81,6 +83,7 @@ export default function Cart() {
 
   const remove = (item) => {
     const data = cart.filter((value, index) => value._id !== item._id);
+    console.log(data)
     let t = 0;
     data.forEach((r) => {
       console.log("price", r.price);
@@ -94,7 +97,7 @@ export default function Cart() {
     };
     console.log(payload);
     axios
-      .post("http://35.154.48.64:3500/api/removeFromCart", payload, {
+      .delete("https://ecom-five-pi.vercel.app/api/remove-from-cart", payload, {
         headers: headers,
       })
       .then(function (response) {
