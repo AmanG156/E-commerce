@@ -37,6 +37,8 @@ function App() {
       
         </Route>
         <Route exact path="/" element={<Products />} />
+        <Route path="/Pages/MyProfile" element={<MyProfile/>}/>
+        <Route path="/Pages/ConfirmAddress" element={<ConfirmAddress/>}/>
         <Route path="/Pages/Signup" element={<Signup/>} />
         <Route path="/Pages/Footer" element={<Footer/>} />
         <Route path="/Pages/Vendor/VSignUp/VSignUp" element={<VSignUp />}/>

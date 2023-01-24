@@ -16,27 +16,25 @@ import {  Link } from "react-router-dom";
 export default function MyProfile() {
   const [showerror, setShowerror] = useState(false);
   // const [address,setAddress]= useGlobalContext()
-  const [image, setImage] = useState(profilepic);
+  const [image, setImage] = useState([]);
   const [path, setPath] = useState("");
   const [data1, setData1] = useState({
     fullName: "",
     email: "",
     contact: "",
     address: "",
-    profile: "",
   });
   const handleInput = (event) => {
     setData1({ ...data1, [event.target.name]: event.target.value });
   };
+
   const handleImage = (e) => {
     // setData1({ })
-    setImage(URL.createObjectURL(e.target.files[0]));
+    let img_url =  URL.createObjectURL(e.target.files[0])
+    console.log(img_url)
 
-    setData1((pre) => {
-      pre = { ...pre, profile: e.target.files[0] };
-      return pre;
-    });
-    console.log(e.target.files);
+    setImage(img_url);
+    uploadImage(img_url)
   };
   const handleReset = () => {
     setData1({
@@ -51,29 +49,37 @@ export default function MyProfile() {
     };
     axios
       .post(
-        "http://35.154.48.64:3500/api/getUserDetails",
+        "https://ecom-five-pi.vercel.app/api/user",
         {},
         { headers: headers }
       )
       .then((val) => {
         let value = val.data.result;
 
-        setPath(
-          value.profileImage
-            ? "data:image/png;base64, " + value.profileImage
-            : image
-        );
-        console.log(value.profileImage);
+        // setPath(
+        //   value.profileImage
+        //     ? "data:image/png;base64, " + value.profileImage
+        //     : image
+        // );
+        // console.log(value.profileImage);
         setData1({
           fullName: value.name,
           email: value.email,
           address: value.address,
           contact: value.mobile,
-          profile: value.profileImage ? value.profileImage : image,
+          // profile: value.profileImage ? value.profileImage : image,
         });
       })
       .catch();
   }, []);
+  const uploadImage=(file)=>{
+
+    const formData = new FormData();
+    formData.append("image", file);
+    axios.post("https://ecom-five-pi.vercel.app/api/upload/profile-pic",formData,)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
+  }
   const handleSubmit = () => {
     console.log(data1);
     if (
@@ -85,25 +91,25 @@ export default function MyProfile() {
       alert("Form is Submitted");
 
       const formData = new FormData();
-      formData.append("image", data1.profile);
+      
       formData.append("name", data1.fullName);
       formData.append("email", data1.email);
       formData.append("mobile", data1.contact);
       formData.append("address", data1.address);
 
-      let payload = {
-        name: data1.fullName,
-        email: data1.email,
-        mobile: data1.contact,
-        address: data1.address,
-        image: formData,
-      };
+      // let payload = {
+      //   name: data1.fullName,
+      //   email: data1.email,
+      //   mobile: data1.contact,
+      //   address: data1.address,
+      //   image: formData,
+      // };
       var headers = {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       };
 
       axios
-        .put("http://35.154.48.64:3500/api/updateProfile", formData, {
+        .put("https://ecom-five-pi.vercel.app/api/user/update", formData, {
           headers: headers,
         })
         .then((val) => console.log(val))
