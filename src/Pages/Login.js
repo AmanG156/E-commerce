@@ -61,7 +61,10 @@ export default function Login() {
           .then((val) => {
             console.log()
             if (val.data.status===200) {
+              Cookies.set("jwtoken",val.data.jwtoken);
+              
               Cookies.set("login", true);
+
               var log= Cookies.get("login");
               setLogin(log)
               // alert("Form is Submitted");

@@ -127,18 +127,24 @@ export default function Products() {
     console.log(lowerCase);
   };
  
-  const handlelogout =()=>{
+  // const handlelogout =()=>{
+  //   axios
+  //   .get("https://ecom-five-pi.vercel.app/api/logout",{withCredentials:true}).then(res => {
+  //      if(res.data.status < 400){
+  //       console.log(res.data);
+  //        let remb= Cookies.remove("crendentials")
+  //        let clear= Cookies.remove("logout")
+  //      }
+  //   }).catch(err => {
+  //   console.log(err);
+  //   })
+  // }
+  const handlelogout=()=>{
     axios
-    .get("https://ecom-five-pi.vercel.app/api/logout",{withCredentials:true}).then(res => {
-       if(res.data.status < 400){
-        console.log(res.data);
-         let remb= Cookies.remove("crendentials")
-         let clear= Cookies.remove("logout")
-       }
-    }).catch(err => {
-    console.log(err);
-    })
-  }
+      .post("https://ecom-five-pi.vercel.app/api/logout",{withCredentials:false})
+      .then(res=>console.log(res.data))
+      .catch(err=>console.log(err))
+     }
   const imgConvert=(img)=>{
    let converted= img?.toString("base64")
    return converted
